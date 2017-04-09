@@ -18,7 +18,8 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <div id="itemsList"></div>
+                <p><div id="itemsList"></div></p>
+                <p><button type="button" value"Add to Cart" onclick="orderCart()">Order</button></p>
             </div><!-- /content -->
 
             <div data-role="footer">
@@ -37,6 +38,36 @@
                         cart = JSON.parse(localStorage.getItem("cart"));
                     }
                     return cart;
+                }
+
+                function getRecipes() {
+                    var recipes = [];
+                    if (localStorage.recipes) {
+                        recipes = JSON.parse(localStorage.getItem("recipes"));
+                    }
+                    return recipes;
+                }
+
+                function addToRecipes(name, url, number) {
+                    // Add recipe to my recipes if not already there 
+                    recipes = getRecipes();
+                    var inRecipes = false;
+                    recipes.forEach(function (recipe, index) {
+                        if(recipe.name == name) {
+                           inRecipes = true;
+                        }
+                    });
+                    if (!inRecipes) {
+                        recipes.push({
+                            name: name,
+                            url: url,
+                            number: number
+                        });
+                    }
+
+                    // Restore in local storage
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+                    console.log(getRecipes());
                 }
 
                 function printCart() {
@@ -66,6 +97,17 @@
                     cart.splice(item.id, 1);
                     localStorage.setItem("cart", JSON.stringify(cart));
                     printCart();    
+                }
+
+                function orderCart() {
+                    cart = getCart();
+                    cart.forEach(function(item, index) {
+                        if(item.mealKit) {
+                            addToRecipes(item.name, item.url, item.number)
+                        }
+                        deleteItem(index);
+                    });  
+
                 }
 
                 window.onload=function() { 
