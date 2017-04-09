@@ -19,8 +19,7 @@
 
             <div role="main" class="ui-content">
                 <p><a rel="external" href="../pages/add_recipe.html" class="ui-btn ui-mini">Add Recipe</a></p>
-                <p><a rel="external" href="../pages/taco_recipe.html" class="ui-btn ui-mini">Tacos</a></p>
-                <p><a rel="external" href="../pages/steak.html" class="ui-btn ui-mini">Steak 2</a></p>
+                <div id="my_recipes"></div>
             </div><!-- /content -->
 
             <div data-role="footer">
@@ -32,6 +31,24 @@
                 </ul>
                 </div>
             </div><!-- /footer -->
+            <script language="javascript">
+                function getRecipes() {
+                    var recipes = [];
+                    if (localStorage.recipes) {
+                        recipes = JSON.parse(localStorage.getItem("recipes"));
+                    }
+                    return recipes;
+                }
+
+                window.onload=function() {
+                    recipes = getRecipes();
+                    html = "";
+
+                    recipes.forEach(function(recipe, index) {
+                        html += "<p><a rel='external' href='" + recipe.url + "' class='ui-btn ui-mini'>" + recipe.name + "</a></p>";
+                    });
+                }
+            </script>
         </div><!-- /page -->
     </body>
 </html>
