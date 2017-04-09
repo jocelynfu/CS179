@@ -18,17 +18,58 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
+                <div id="itemsList"></div>
             </div><!-- /content -->
 
             <div data-role="footer">
                 <div data-role="navbar">
                 <ul>
-                    <li><a href="#" data-rel="back">Back</a></li>
-                    <li><a href="../">Home</a></li>
-                    <li><a href="../pages/cart.html"> Cart </a></p>
+                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
                 </ul>
                 </div>
             </div><!-- /footer -->
+            <script language="javascript">
+                function getCart() {
+                    var cart = [];
+                    if (localStorage.cart) {
+                        cart = JSON.parse(localStorage.getItem("cart"));
+                    }
+                    return cart;
+                }
+
+                function printCart() {
+                    cart = getCart();
+                    var ul = document.createElement('ul');
+                    ul.setAttribute('id','items');
+                    document.getElementById('itemsList').innerHTML = "";
+                    document.getElementById('itemsList').appendChild(ul);
+                    cart.forEach(renderList);
+
+                    function renderList(item, index) {
+                        var li = document.createElement("LI");
+                        li.setAttribute('class','item');
+                        li.setAttribute('id', index);
+                        ul.appendChild(li);
+                        t = document.createTextNode(index);
+                        console.log(item.img);
+                        li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " " + item.volume + " " + item.number + "<button type='button' onclick='deleteItem(this.parentElement)'>X</button>";
+                    }
+                }
+
+                function deleteItem(item) {
+                    cart = getCart();
+                    cart.splice(item.id, 1);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    printCart();    
+                }
+
+                window.onload=function() { 
+                    console.log("here");
+                    printCart();
+                }
+            </script>
         </div><!-- /page -->
     </body>
 </html>
