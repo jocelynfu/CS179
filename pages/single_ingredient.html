@@ -72,6 +72,7 @@
                     var img = "../img/apple.jpg";
                     var volume = document.getElementById("volume").value;
                     var number = document.getElementById("number").value;
+                    var mealKit = false;
                     var inCart = false;
 
                     // Add item to cart or update if already there 
@@ -87,7 +88,8 @@
                             name: name,
                             img: img,
                             volume: volume,
-                            number: number
+                            number: number,
+                            mealKit: mealKit
                         });
                     }
 

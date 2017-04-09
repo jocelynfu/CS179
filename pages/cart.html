@@ -53,8 +53,11 @@
                         li.setAttribute('id', index);
                         ul.appendChild(li);
                         t = document.createTextNode(index);
-                        console.log(item.img);
-                        li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " " + item.volume + " " + item.number + "<button type='button' onclick='deleteItem(this.parentElement)'>X</button>";
+                        if (!item.mealKit) {
+                            li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Volume: " + item.volume + "  Number: " + item.number + "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
+                        } else {
+                            li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Servings: " + item.number + "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
+                        }     
                     }
                 }
 
