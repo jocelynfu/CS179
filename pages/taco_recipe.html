@@ -11,7 +11,7 @@
 </head>
     <body>
          <!-- Start of cook page -->
-        <div data-role="page" id="sample_recipe">
+        <div data-role="page" id="taco_recipe">
 
             <div data-role="header">
                 <h1>Recipe example 1</h1>
@@ -19,6 +19,8 @@
 
             <div role="main" class="ui-content">
                 <center><p><img src="../img/tacos.png" width='80'></center>
+                <p><button type="button" value"remove" onclick="removeRecipe()">Remove from My Recipes</button></p>
+                <p><a rel="external" href="../pages/taco_meal_kit.html" class="ui-btn ui-mini">Meal Kit</a></p>
                 <p><a rel="external" href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
                 <p><a rel="external" href="../" class="ui-btn ui-mini">Back to Main</a></p>
             </div><!-- /content -->
@@ -26,6 +28,26 @@
             <div data-role="footer">
                 <h4>Page Footer</h4>
             </div><!-- /footer -->
+            <script language="javascript">
+                function getRecipes() {
+                    var recipes = [];
+                    if (localStorage.recipes) {
+                        recipes = JSON.parse(localStorage.getItem("recipes"));
+                    }
+                    return recipes;
+                }
+
+                function removeRecipe() {
+                    var recipes = getRecipes();
+                    recipes = recipes.filter(function(recipe) {
+                        return recipe.name !== "Tacos";
+                    });
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+
+                    console.log(recipes);
+                    document.location.href = "../pages/my_recipes.html";
+                }
+            </script>
         </div><!-- /page -->
     </body>
 </html>
