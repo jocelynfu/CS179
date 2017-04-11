@@ -11,14 +11,14 @@
 </head>
     <body>
          <!-- Start of cook page -->
-        <div data-role="page" id="steak_meal_kit">
+        <div data-role="page" id="tacos_meal_kit">
 
             <div data-role="header">
-                <h1>Steak Meal Kit</h1>
+                <h1>Grandma's Chicken Meal Kit</h1>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <center><p><img src="../img/steak.jpg" width='80'>
+                <center><p><img src="../img/chicken.png" width='80'>
                 <p>Meal Kit details goes here!</p>
                 <p><fieldset class="ui-field-contain">
                 <label for="number">Number of Servings</label>
@@ -58,8 +58,8 @@
                 }
 
                 function addToCart() {
-                    var name = "Steak";
-                    var img = "../img/steak.jpg";
+                    var name = "Chicken";
+                    var img = "../img/chicken.png";
                     var number = document.getElementById("number").value;
                     var mealKit = true;
                     var inCart = false;
@@ -78,7 +78,7 @@
                             img: img,
                             number: number,
                             mealKit: mealKit,
-                            url: "../pages/steak_recipe.html"
+                            url: "../pages/input_recipe.html"
                         });
                     }
 
