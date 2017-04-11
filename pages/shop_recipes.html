@@ -19,6 +19,35 @@
 
             <div role="main" class="ui-content">
                 <p> Instead of individual ingredients, users can shop for pre-set meals, and all ingredients in the recipe will be in one package, pre-cut and measured. </p>
+                <a href="#meal_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Meal</a>
+                <a href="#cusine_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Cuisine</a>
+
+                <div data-role="popup" id="meal_filter" class="ui-content" style="min-width:250px;">
+                  <form>
+                        <fieldset data-role="controlgroup">
+                        <legend>Meals</legend>
+                        <input type="checkbox" name="breakfast" id="breakfast">
+                        <label for="breakfast">Breakfast</label>
+                        <input type="checkbox" name="lunch" id="lunch">
+                        <label for="lunch">Lunch</label>
+                        <input type="checkbox" name="dinner" id="dinner">
+                        <label for="dinner">Dinner</label>
+                    </fieldset>
+                  </form>
+                </div>
+
+                <div data-role="popup" id="cusine_filter" class="ui-content" style="min-width:250px;">
+                  <form>
+                        <fieldset data-role="controlgroup">
+                        <legend>Cusines</legend>
+                        <input type="checkbox" name="american" id="american">
+                        <label for="mexican">American</label>
+                        <input type="checkbox" name="mexican" id="mexican">
+                        <label for="mexican">Mexican</label>
+                    </fieldset>
+                  </form>
+                </div>
+
                 <p><a rel="external" href="../pages/recipe_types.html" class="ui-btn ui-mini">Meal Kit Type 1</a></p>
                 <p><a rel="external" href="../pages/recipe_types.html" class="ui-btn ui-mini">Meal Kit Type 2</a></p>
                 <p><a rel="external" href="../pages/recipe_types.html" class="ui-btn ui-mini">Meal Kit Type 3</a></p>
