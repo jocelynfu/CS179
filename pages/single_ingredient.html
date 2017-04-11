@@ -43,6 +43,13 @@
                         <option value="10">10</option>
                     </select>
                 </fieldset></p>
+                <p><fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>Options:</legend>
+                    <input type="checkbox" name="chopped" id="chopped">
+                    <label for="chopped">Pre-chopped</label>
+                    <input type="checkbox" name="seasoned" id="seasoned">
+                    <label for="seasoned">Pre-seasoned</label>
+                </fieldset></p>
                 <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
                 </center>
                 
@@ -58,6 +65,9 @@
                 </ul>
                 </div>
             </div><!-- /footer -->
+            <div data-role="popup" id="popupCarted">
+                <p>Added to Cart<p>
+            </div><!-- /popup -->
             <script language="javascript">
                 function getCart() {
                     var cart = [];
@@ -72,13 +82,15 @@
                     var img = "../img/apple.jpg";
                     var volume = document.getElementById("volume").value;
                     var number = document.getElementById("number").value;
+                    var chopped = $('#chopped').is(':checked');
+                    var seasoned = $('#seasoned').is(':checked');;
                     var mealKit = false;
                     var inCart = false;
 
                     // Add item to cart or update if already there 
                     cart = getCart();
                     cart.forEach(function (item, index) {
-                        if(item.name == name && item.volume == volume) {
+                        if(item.name == name && item.volume == volume && item.chopped == chopped && item.seasoned == seasoned) {
                             item.number = parseInt(item.number) + parseInt(number);
                             inCart = true;
                         }
@@ -89,6 +101,8 @@
                             img: img,
                             volume: volume,
                             number: number,
+                            chopped: chopped,
+                            seasoned: seasoned,
                             mealKit: mealKit
                         });
                     }
@@ -96,6 +110,7 @@
                     // Restore in local storage
                     localStorage.setItem("cart", JSON.stringify(cart));
                     console.log(getCart());
+                    $( "#popupCarted" ).popup( "open" );
                 }
             </script>
         </div><!-- /page -->

@@ -31,6 +31,10 @@
                 </ul>
                 </div>
             </div><!-- /footer -->
+
+            <div data-role="popup" id="popupOrdered">
+                <p>Order Successful<p>
+            </div><!-- /popup -->
             <script language="javascript">
                 function getCart() {
                     var cart = [];
@@ -85,7 +89,10 @@
                         ul.appendChild(li);
                         t = document.createTextNode(index);
                         if (!item.mealKit) {
-                            li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Volume: " + item.volume + "  Number: " + item.number + "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
+                            li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Volume: " + item.volume + "  Number: " + item.number;
+                            if(item.chopped) li.innerHTML += " Pre-chopped ";
+                            if(item.seasoned) li.innerHTML += " Pre-seasoned ";
+                            li.innerHTML += "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
                         } else {
                             li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Servings: " + item.number + "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
                         }     
@@ -107,7 +114,7 @@
                         }
                         deleteItem(index);
                     });  
-
+                    $( "#popupOrdered" ).popup( "open" );
                 }
 
                 window.onload=function() { 
