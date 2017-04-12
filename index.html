@@ -6,6 +6,12 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <script>
+        function play(){
+            var audio = document.getElementById("audio");
+            audio.play();
+         }
+    </script>
     <link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 </head>
@@ -24,13 +30,7 @@
                 <p><a rel="external" href="pages/cart.html" class="ui-btn ui-mini">Cart</a></p>
                 <p><a rel="external" href="pages/cooking_tools.html" class="ui-btn ui-mini">Cooking Tools</a></p>
             </div><!-- /content -->
-                <script>
-                    function play(){
-                    var audio = document.getElementById("audio");
-                    audio.play();
-                 }
-                </script>
-
+                
             <div style="text-align: center;">
                 <input type="image" id="audiobutton" style="height:100px;width:100px;" src="img/audio.png" onclick="play()"/>
                 <audio id="audio" src="audio/HomeScreen.m4a" ></audio>
