@@ -18,9 +18,24 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p><a rel="external" href="../pages/ingredient_types.html" class="ui-btn ui-mini">Ingredient Type 1</a></p>
-                <p><a rel="external" href="../pages/ingredient_types.html" class="ui-btn ui-mini">Ingredient Type 2</a></p>
-                <p><a rel="external" href="../pages/ingredient_types.html" class="ui-btn ui-mini">Ingredient Type 3</a></p>
+                <a href="#ingredient_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Type</a>
+                <div data-role="popup" id="ingredient_filter" class="ui-content" style="min-width:250px;">
+                  <form>
+                        <fieldset data-role="controlgroup" onchange="printIngredients()">
+                        <legend>Ingredients</legend>
+                        <input type="checkbox" name="fruits" id="fruits" class="type" checked=true>
+                        <label for="fruits">Fruits</label>
+                        <input type="checkbox" name="vegetables" id="vegetables" class="type">
+                        <label for="vegetables">Vegetables</label>
+                        <input type="checkbox" name="meats" id="meats" class="type">
+                        <label for="meats">Meats</label>
+                        <input type="checkbox" name="seafood" id="seafood" class="type">
+                        <label for="seafood">Seafood</label>
+                    </fieldset>
+                  </form>
+                </div>
+                <div id="ingredients">
+                </div>
             </div><!-- /content -->
 
             <div data-role="footer">
@@ -32,6 +47,47 @@
                 </ul>
                 </div>
             </div><!-- /footer -->
+            <script src="data/ingredientData.js"></script>
+            <script language="javascript">
+                function printIngredients() {
+                    // get ingredient data
+                    var ing = ingredientData
+
+                    // create filtered data through function
+                    var filtered = filterData(ing);
+
+                    // display ingedient
+                    displayIngredient(filtered);
+                }
+
+                function filterData(ing){
+                    typeSelected=[]
+                    var status = $('input[type="checkbox"').filter(".type").map(function(){
+                            var name = $(this).attr('name'); 
+                            if($(this).is(':checked'))
+                                 typeSelected.push(name);
+                        });
+
+                    var filteredIng = ing.filter(function (s) {
+                        return (typeSelected.indexOf(s.type) >= 0);
+                    });
+
+                    return filteredIng;
+                }
+
+                function displayIngredient(ing) {
+                    ingList=""
+                    ing.forEach(function(s){
+                         ingList += "<p><a rel='external' href="+s.link+" class='ui-btn ui-mini'>"+s.name+"</a></p>";
+                    });
+                    document.getElementById('ingredients').innerHTML = ingList
+                }
+
+
+                window.onload=function() { 
+                    printIngredients();
+                }
+            </script>
         </div><!-- /page -->
     </body>
 </html>

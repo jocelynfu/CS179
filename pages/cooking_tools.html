@@ -6,6 +6,12 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <script>
+        function play(){
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+    </script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
@@ -23,6 +29,11 @@
                 <p><a rel="external" href="../pages/camera.html" class="ui-btn ui-mini">Camera</a></p>
                 
             </div><!-- /content -->
+
+            <div style="text-align: center;">
+                <input type="image" id="audiobutton" style="height:100px;width:100px;" src="../img/audio.png" onclick="play()"/>
+                <audio id="audio" src="../audio/CookingTools.m4a" ></audio>
+            </div>
 
             <div data-role="footer">
                 <div data-role="navbar">
