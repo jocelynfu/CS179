@@ -11,26 +11,22 @@
 </head>
     <body>
          <!-- Start of cook page -->
-        <div data-role="page" id="my_recipes">
+        <div data-role="page" id="input_recipe">
 
             <div data-role="header">
-                <h1>My Recipes</h1>
+                <h1>Granda's Chicken Recipe</h1>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p><a href="../pages/add_recipe.html" class="ui-btn ui-mini">Add Recipe</a></p>
-                <div id="recipesList"></div>
-                <p><a rel="external" href="../pages/add_recipe.html" class="ui-btn ui-mini">Add Your Own Recipe</a></p>
+                <center><p><img src="../img/chicken.png" width='80'></center>
+                <p><button type="button" value"remove" onclick="removeRecipe()">Remove from My Recipes</button></p>
+                <p><a rel="external" href="../pages/chicken_meal_kit.html" class="ui-btn ui-mini">Meal Kit</a></p>
+                <p><a rel="external" href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
+                <p><a rel="external" href="../" class="ui-btn ui-mini">Back to Main</a></p>
             </div><!-- /content -->
 
             <div data-role="footer">
-                <div data-role="navbar">
-                <ul>
-                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
-                    <li><a rel="external" href="../">Home</a></li>
-                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
-                </ul>
-                </div>
+                <h4>Page Footer</h4>
             </div><!-- /footer -->
             <script language="javascript">
                 function getRecipes() {
@@ -41,14 +37,15 @@
                     return recipes;
                 }
 
-                window.onload=function() {
-                    recipes = getRecipes();
-                    html = "";
-
-                    recipes.forEach(function(recipe, index) {
-                        html += "<p><a rel='external' href='" + recipe.url + "' class='ui-btn ui-mini'>" + recipe.name + "</a></p>";
+                function removeRecipe() {
+                    var recipes = getRecipes();
+                    recipes = recipes.filter(function(recipe) {
+                        return recipe.name !== "Chicken";
                     });
-                    document.getElementById('recipesList').innerHTML = html;
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+
+                    console.log(recipes);
+                    document.location.href = "../pages/my_recipes.html";
                 }
             </script>
         </div><!-- /page -->

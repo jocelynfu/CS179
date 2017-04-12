@@ -18,14 +18,76 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p> Copy & Paste in your recipe. </p>
-                <p><a href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
-                <p><a href="../" class="ui-btn ui-mini">Back to Main</a></p>
+                <div class="ui-field-contain">
+                    <p><label for="textarea">Copy & Paste in your recipe here.</label><textarea name="textarea" id="textarea">
+                        Grandma's Chicken Recipe
+                        *       2 tablespoons olive oil
+                        *       1 chicken (4 to 5 lbs.), cut into 6 pieces (2 bone-in breast halves, 2 bone-in thighs, and 2 bone-in drumsticks)
+                        *       1 teaspoon salt
+                        *       1 teaspoon freshly ground black pepper
+                        *       1 cup frozen pearl onions
+                        *       6 large cloves garlic, unpeeled
+                        *       2 sprigs fresh thyme
+                        *       1 pound baby Yukon Gold potatoes, scrubbed and halved
+                        *       3 slices thick-cut bacon, sliced crosswise into 1/4-in.-wide pieces
+                        *       1 pound cremini or button mushrooms, trimmed and cut into quarters
+                        *       2 cups reduced-sodium chicken broth
+
+                        How to Make It
+                        * Preheat oven to 375. Heat oil in a heavy-bottomed 4- to 5-qt. pot over medium-high heat. Season chicken pieces with salt and pepper and add skin side down to pot. Cook until skin is crispy and deeply browned, about 12 minutes. Remove chicken from pot and set aside.  
+                        * Pour off all but 2 tbsp. cooking fat, reduce heat to medium-low, and add onions, garlic, and thyme. Cook, stirring often, for 5 minutes, then add potatoes and bacon. Cook, stirring occasionally, until mixture is well browned, about 8 minutes. Pour off all but a thin layer of fat.  
+                        * Add mushrooms and chicken stock, bring liquid to a boil, and cook until liquid is reduced by one-quarter. Arrange chicken, skin side up, on top of vegetables.  
+                        * Transfer pot to oven and bake, uncovered, until chicken is cooked through, about 20 minutes.  
+                        * Note: Nutritional analysis is per serving. 
+                    </textarea></p>
+                    <p><button type="button" value"Add to Cart" onclick="addRecipe()">Create New Recipe</button></p>
+                </div>
             </div><!-- /content -->
 
             <div data-role="footer">
-                <h4>Page Footer</h4>
+                <div data-role="navbar">
+                <ul>
+                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                </ul>
+                </div>
             </div><!-- /footer -->
+            <script language="javascript">
+                function getRecipes() {
+                    var recipes = [];
+                    if (localStorage.recipes) {
+                        recipes = JSON.parse(localStorage.getItem("recipes"));
+                    }
+                    return recipes;
+                }
+
+                function addRecipe() {
+                        var name = "Chicken";
+                        var url =  "../pages/input_recipe.html";
+                        var number = 0; 
+
+                        // Add recipe to my recipes if not already there 
+                        recipes = getRecipes();
+                        var inRecipes = false;
+                        recipes.forEach(function (recipe, index) {
+                            if(recipe.name == name) {
+                               inRecipes = true;
+                            }
+                        });
+                        if (!inRecipes) {
+                            recipes.push({
+                                name: name,
+                                url: url,
+                                number: number
+                            });
+                        }
+
+                        // Restore in local storage
+                        localStorage.setItem("recipes", JSON.stringify(recipes));
+                        console.log(getRecipes());
+                        document.location.href = url;
+                    }
+            </script>
         </div><!-- /page -->
     </body>
 </html>

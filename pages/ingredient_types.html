@@ -18,16 +18,19 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p><a href="../pages/single_ingredient.html" class="ui-btn ui-mini">Ingredient 1</a></p>
-                <p><a href="../pages/single_ingredient.html" class="ui-btn ui-mini">Ingredient 2</a></p>
-                <p><a href="../pages/single_ingredient.html" class="ui-btn ui-mini">Ingredient 3</a></p>
-                <p><a href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
-                <p><a href="../" class="ui-btn ui-mini">Back to Main</a></p>
-                <p><a href="../pages/cart.html" class="ui-btn ui-mini">Cart</a></p>
+                <p><a rel="external" href="../pages/single_ingredient.html" class="ui-btn ui-mini">Ingredient 1 <img src="../img/apple.jpg" width='30'></a></p>
+                <p><a rel="external" href="../pages/single_ingredient.html" class="ui-btn ui-mini">Ingredient 2 <img src="../img/apple.jpg" width='30'></a></p>
+                <p><a rel="external" href="../pages/single_ingredient.html" class="ui-btn ui-mini">Ingredient 3 <img src="../img/apple.jpg" width='30'></a></p>
             </div><!-- /content -->
 
             <div data-role="footer">
-                <h4>Page Footer</h4>
+                <div data-role="navbar">
+                <ul>
+                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
+                </ul>
+                </div>
             </div><!-- /footer -->
         </div><!-- /page -->
     </body>

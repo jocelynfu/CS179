@@ -18,15 +18,17 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p><a href="../pages/download_recipe.html" class="ui-btn ui-mini">Download from Database</a></p>
-                <p><a href="../pages/text_recipe.html" class="ui-btn ui-mini">Enter through Text</a></p>
-                <p><a href="../pages/scan_recipe.html" class="ui-btn ui-mini">Enter through Scan</a></p>
-                <p><a href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
-                <p><a href="../" class="ui-btn ui-mini">Back to Main</a></p>
+                <p><a rel="external" href="../pages/text_recipe.html" class="ui-btn ui-mini">Enter through Text</a></p>
+                <p><a rel="external" href="../pages/scan_recipe.html" class="ui-btn ui-mini">Enter through Scan</a></p>
             </div><!-- /content -->
 
             <div data-role="footer">
-                <h4>Page Footer</h4>
+                <div data-role="navbar">
+                <ul>
+                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                </ul>
+                </div>
             </div><!-- /footer -->
         </div><!-- /page -->
     </body>

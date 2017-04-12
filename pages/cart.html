@@ -18,13 +18,110 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p><a href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
-                <p><a href="../" class="ui-btn ui-mini">Back to Main</a></p>
+                <p><div id="itemsList"></div></p>
+                <p><button type="button" value"Add to Cart" onclick="orderCart()">Order</button></p>
             </div><!-- /content -->
 
             <div data-role="footer">
-                <h4>Page Footer</h4>
+                <div data-role="navbar">
+                <ul>
+                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
+                </ul>
+                </div>
             </div><!-- /footer -->
+
+            <div data-role="popup" id="popupOrdered">
+                <p>Order Successful<p>
+            </div><!-- /popup -->
+            <script language="javascript">
+                function getCart() {
+                    var cart = [];
+                    if (localStorage.cart) {
+                        cart = JSON.parse(localStorage.getItem("cart"));
+                    }
+                    return cart;
+                }
+
+                function getRecipes() {
+                    var recipes = [];
+                    if (localStorage.recipes) {
+                        recipes = JSON.parse(localStorage.getItem("recipes"));
+                    }
+                    return recipes;
+                }
+
+                function addToRecipes(name, url, number) {
+                    // Add recipe to my recipes if not already there 
+                    recipes = getRecipes();
+                    var inRecipes = false;
+                    recipes.forEach(function (recipe, index) {
+                        if(recipe.name == name) {
+                           inRecipes = true;
+                        }
+                    });
+                    if (!inRecipes) {
+                        recipes.push({
+                            name: name,
+                            url: url,
+                            number: number
+                        });
+                    }
+
+                    // Restore in local storage
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+                    console.log(getRecipes());
+                }
+
+                function printCart() {
+                    cart = getCart();
+                    var ul = document.createElement('ul');
+                    ul.setAttribute('id','items');
+                    document.getElementById('itemsList').innerHTML = "";
+                    document.getElementById('itemsList').appendChild(ul);
+                    cart.forEach(renderList);
+
+                    function renderList(item, index) {
+                        var li = document.createElement("LI");
+                        li.setAttribute('class','item');
+                        li.setAttribute('id', index);
+                        ul.appendChild(li);
+                        t = document.createTextNode(index);
+                        if (!item.mealKit) {
+                            li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Volume: " + item.volume + "  Number: " + item.number;
+                            if(item.chopped) li.innerHTML += " Pre-chopped ";
+                            if(item.seasoned) li.innerHTML += " Pre-seasoned ";
+                            li.innerHTML += "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
+                        } else {
+                            li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Servings: " + item.number + "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
+                        }     
+                    }
+                }
+
+                function deleteItem(item) {
+                    cart = getCart();
+                    cart.splice(item.id, 1);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    printCart();    
+                }
+
+                function orderCart() {
+                    cart = getCart();
+                    cart.forEach(function(item, index) {
+                        if(item.mealKit) {
+                            addToRecipes(item.name, item.url, item.number)
+                        }
+                        deleteItem(index);
+                    });  
+                    $( "#popupOrdered" ).popup( "open" );
+                }
+
+                window.onload=function() { 
+                    console.log("here");
+                    printCart();
+                }
+            </script>
         </div><!-- /page -->
     </body>
 </html>

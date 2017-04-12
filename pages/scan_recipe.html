@@ -18,14 +18,54 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p> Take a photo of your handwritten recipe here! </p>
-                <p><a href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
-                <p><a href="../" class="ui-btn ui-mini">Back to Main</a></p>
+                <center><img src="../img/chicken_camera.jpg" width='200'></center>
+                <p><button type="button" value"Add to Cart" onclick="addRecipe()">Take Photo</button></p>
             </div><!-- /content -->
 
             <div data-role="footer">
-                <h4>Page Footer</h4>
+                <div data-role="navbar">
+                <ul>
+                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                </ul>
+                </div>
             </div><!-- /footer -->
+            <script language="javascript">
+                function getRecipes() {
+                    var recipes = [];
+                    if (localStorage.recipes) {
+                        recipes = JSON.parse(localStorage.getItem("recipes"));
+                    }
+                    return recipes;
+                }
+
+                function addRecipe() {
+                        var name = "Chicken";
+                        var url =  "../pages/input_recipe.html";
+                        var number = 0; 
+
+                        // Add recipe to my recipes if not already there 
+                        recipes = getRecipes();
+                        var inRecipes = false;
+                        recipes.forEach(function (recipe, index) {
+                            if(recipe.name == name) {
+                               inRecipes = true;
+                            }
+                        });
+                        if (!inRecipes) {
+                            recipes.push({
+                                name: name,
+                                url: url,
+                                number: number
+                            });
+                        }
+
+                        // Restore in local storage
+                        localStorage.setItem("recipes", JSON.stringify(recipes));
+                        console.log(getRecipes());
+                        document.location.href = url;
+                    }
+            </script>
         </div><!-- /page -->
     </body>
 </html>

@@ -19,17 +19,97 @@
 
             <div role="main" class="ui-content">
                 <p> Instead of individual ingredients, users can shop for pre-set meals, and all ingredients in the recipe will be in one package, pre-cut and measured. </p>
-                <p><a href="../pages/recipe_types.html" class="ui-btn ui-mini">Meal Kit Type 1</a></p>
-                <p><a href="../pages/recipe_types.html" class="ui-btn ui-mini">Meal Kit Type 2</a></p>
-                <p><a href="../pages/recipe_types.html" class="ui-btn ui-mini">Meal Kit Type 3</a></p>
-                <p><a href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
-                <p><a href="../" class="ui-btn ui-mini">Back to Main</a></p>
-                <p><a href="../pages/cart.html" class="ui-btn ui-mini">Cart</a></p>
+                <a href="#meal_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Meal</a>
+                <a href="#cusine_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Cuisine</a>
+
+                <div data-role="popup" id="meal_filter" class="ui-content" style="min-width:250px;">
+                  <form>
+                        <fieldset data-role="controlgroup" onchange="printMeal()">
+                        <legend>Meals</legend>
+                        <input type="checkbox" name="breakfast" id="breakfast" class="mealOfDay" checked=true>
+                        <label for="breakfast">Breakfast</label>
+                        <input type="checkbox" name="lunch" id="lunch" class="mealOfDay" checked=true>
+                        <label for="lunch">Lunch</label>
+                        <input type="checkbox" name="dinner" id="dinner" class="mealOfDay" checked=true>
+                        <label for="dinner">Dinner</label>
+                    </fieldset>
+                  </form>
+                </div>
+
+                <div data-role="popup" id="cusine_filter" class="ui-content" style="min-width:250px;">
+                  <form>
+                        <fieldset data-role="controlgroup" onchange="printMeal()">
+                        <legend>Cusines</legend>
+                        <input type="checkbox" name="american" id="american" class="cuisine" checked=true>
+                        <label for="american">American</label>
+                        <input type="checkbox" name="mexican" id="mexican" class="cuisine" checked=true>
+                        <label for="mexican">Mexican</label>
+                    </fieldset>
+                  </form>
+                </div>
+
+                <div id="mealKits">
+                </div>
             </div><!-- /content -->
 
             <div data-role="footer">
-                <h4>Page Footer</h4>
+                <div data-role="navbar">
+                <ul>
+                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
+                </ul>
+                </div>
             </div><!-- /footer -->
+            <script src="data/mealData.js"></script>
+            <script language="javascript">
+                function printMeal() {
+                    // get meal data
+                    var meals = mealData
+
+                    // create filtered data through function
+                    var filtered = filterData(meals);
+
+                    // display meals
+                    displayMeal(filtered);
+                }
+
+                function filterData(meals){
+                    mealsSelected=[]
+                    var status = $('input[type="checkbox"').filter(".mealOfDay").map(function(){
+                            var name = $(this).attr('name'); 
+                            if($(this).is(':checked'))
+                                 mealsSelected.push(name);
+                        });
+
+                    cuisinesSelected=[]
+                    var status = $('input[type="checkbox"').filter(".cuisine").map(function(){
+                            var name = $(this).attr('name'); 
+                            if($(this).is(':checked'))
+                                 cuisinesSelected.push(name);
+                        });
+
+                    var filteredMeals = meals.filter(function (s) {
+                        return (mealsSelected.indexOf(s.meal_of_day) >= 0 && cuisinesSelected.indexOf(s.cuisine) >= 0 );
+                    });
+
+                    return filteredMeals;
+                }
+
+                function displayMeal(meals) {
+                    console.log(meals);
+                    mealsList=""
+                    meals.forEach(function(s){
+                         mealsList += "<p><a rel='external' href="+s.link+" class='ui-btn ui-mini'>"+s.name+"</a></p>";
+                    });
+                    document.getElementById('mealKits').innerHTML = mealsList
+                }
+
+
+                window.onload=function() { 
+                    printMeal();
+                }
+            </script>
         </div><!-- /page -->
     </body>
 </html>
