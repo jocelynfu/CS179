@@ -6,6 +6,12 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <script>
+        function play(){
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+    </script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
@@ -21,6 +27,11 @@
                 <p><a rel="external" href="../pages/text_recipe.html" class="ui-btn ui-mini">Enter through Text</a></p>
                 <p><a rel="external" href="../pages/scan_recipe.html" class="ui-btn ui-mini">Enter through Scan</a></p>
             </div><!-- /content -->
+
+            <div style="text-align: center;">
+                <input type="image" id="audiobutton" style="height:100px;width:100px;" src="../../img/audio.png" onclick="play()"/>
+                <audio id="audio" src="../../audio/newRecipe.m4a" ></audio>
+            </div>
 
             <div data-role="footer">
                 <div data-role="navbar">
