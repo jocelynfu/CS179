@@ -4,7 +4,7 @@ var ingredientData = [
 		"name": "Honey Crisp Apples ($2/oz)",
 		"type": "fruits",
 		"price": 2,
-		"link": "../pages/single_ing	redient.html"
+		"link": "../pages/single_ingredient.html"
 	},
 	{
 		"ingredient_id": 2,
