@@ -5,7 +5,7 @@ var mealData = [
 		"meal_of_day": "lunch",
 		"price": 25,
 		"cuisine": "mexican",
-		"link": "../pages/taco_meal_kit.html"
+		"link": "../pages/taco_recipe.html"
 	},
 	{
 		"mealkit_id": 2,
@@ -13,6 +13,6 @@ var mealData = [
 		"meal_of_day": "dinner",
 		"price": 40,
 		"cuisine": "american",
-		"link": "../pages/steak_meal_kit.html"
+		"link": "../pages/steak_recipe.html"
 	}
 ];
