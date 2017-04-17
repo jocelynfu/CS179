@@ -17,30 +17,33 @@
 </head>
     <body>
          <!-- Start of cook page -->
-        <div data-role="page" id="add_recipe">
+        <div data-role="page" id="my_recipes">
 
             <div data-role="header">
                 <h1>My Recipes</h1>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p><a rel="external" href="../pages/text_recipe.html" class="ui-btn ui-mini">Enter through Text</a></p>
-                <p><a rel="external" href="../pages/scan_recipe.html" class="ui-btn ui-mini">Enter through Scan</a></p>
+                <p><a rel="external" href="../pages/shop_recipes.html" class="ui-btn ui-mini">Recipe Database</a></p>
+                <p><a rel="external" href="../pages/my_recipes.html" class="ui-btn ui-mini">My Recipes</a></p>
+                <p><a rel="external" href="../pages/add_recipe.html" class="ui-btn ui-mini">Add Your Own Recipe</a></p>
             </div><!-- /content -->
 
             <div style="text-align: center;">
-                <input type="image" id="audiobutton" style="height:100px;width:100px;" src="../../img/audio.png" onclick="play()"/>
-                <audio id="audio" autoplay="autoplay" src="../../audio/newRecipe.m4a" ></audio>
+                <input type="image" id="audiobutton" style="height:100px;width:100px;" src="../img/audio.png" onclick="play()"/>
+                <audio id="audio" src="../audio/MyRecipes.m4a" ></audio>
             </div>
-
-            <div class="foot" data-role="footer">
+            
+            <div data-role="footer">
                 <div data-role="navbar">
                 <ul>
                     <li><a rel="external" href="#" data-rel="back">Back</a></li>
                     <li><a rel="external" href="../">Home</a></li>
+                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
                 </ul>
                 </div>
             </div><!-- /footer -->
         </div><!-- /page -->
+
     </body>
 </html>

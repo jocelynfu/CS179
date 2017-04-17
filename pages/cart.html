@@ -22,7 +22,7 @@
                 <p><button type="button" value"Add to Cart" onclick="orderCart()">Order</button></p>
             </div><!-- /content -->
 
-            <div data-role="footer">
+            <div class="foot" data-role="footer">
                 <div data-role="navbar">
                 <ul>
                     <li><a rel="external" href="#" data-rel="back">Back</a></li>
@@ -107,13 +107,20 @@
                 }
 
                 function orderCart() {
+                    html = "<p> Cart Ordered! </p><p>";
                     cart = getCart();
+                    myRecipesUpdated = false;
                     cart.forEach(function(item, index) {
                         if(item.mealKit) {
+                            myRecipesUpdated = true;
+                            html += "<p>" + item.name + "</p>"
                             addToRecipes(item.name, item.url, item.number)
                         }
                         deleteItem(index);
-                    });  
+                    }); 
+                    if(myRecipesUpdated) html += "Added to My Recipes";
+                    console.log(html);
+                    $('#popupOrdered').html(html); 
                     $( "#popupOrdered" ).popup( "open" );
                 }
 
