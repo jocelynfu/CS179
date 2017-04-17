@@ -14,5 +14,13 @@ var mealData = [
 		"price": 40,
 		"cuisine": "american",
 		"link": "../pages/steak_recipe.html"
+	},
+	{
+		"mealkit_id": 3,
+		"name": "Beef Broccoli Stir-Fry",
+		"meal_of_day": "dinner",
+		"price": 40,
+		"cuisine": "american",
+		"link": "../pages/beef_broccoli_recipe.html"
 	}
 ];
