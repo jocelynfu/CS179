@@ -8,6 +8,7 @@
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
+    <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
     <body>
          <!-- Start of cook page -->
@@ -89,12 +90,12 @@
                         ul.appendChild(li);
                         t = document.createTextNode(index);
                         if (!item.mealKit) {
-                            li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Volume: " + item.volume + "  Number: " + item.number;
-                            if(item.chopped) li.innerHTML += " Pre-chopped ";
-                            if(item.seasoned) li.innerHTML += " Pre-seasoned ";
-                            li.innerHTML += "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
+                            li.innerHTML=li.innerHTML + item.number + " " + item.volume + "oz. of " + item.name;
+                            if(item.chopped) li.innerHTML += " pre-chopped ";
+                            if(item.seasoned) li.innerHTML += " pre-seasoned ";
+                            li.innerHTML += " <button type='button' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
                         } else {
-                            li.innerHTML=li.innerHTML + "<img src='" + item.img + "' width='30'> " + item.name + " Servings: " + item.number + "<button type='button' onclick='deleteItem(this.parentElement)'>Remove</button>";
+                            li.innerHTML=li.innerHTML + item.number + " " + item.name + " <button type='button' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
                         }     
                     }
                 }
