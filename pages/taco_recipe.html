@@ -19,14 +19,35 @@
 
             <div role="main" class="ui-content">
                 <center><p><img src="../img/tacos.png" width='80'></center>
-                <p><button type="button" value"remove" onclick="removeRecipe()">Remove from My Recipes</button></p>
-                <p><a rel="external" href="../pages/taco_meal_kit.html" class="ui-btn ui-mini">Meal Kit</a></p>
-                <p><a rel="external" href="#" class="ui-btn ui-mini" data-rel="back">Go Back</a></p>
-                <p><a rel="external" href="../" class="ui-btn ui-mini">Back to Main</a></p>
+                <p><fieldset class="ui-field-contain">
+                <label for="number">Number of Servings</label>
+                    <select name="number" id="number">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </fieldset></p>
+                <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
+                </center>
+                <p><text id="inMyRecipes"></text></p>
+                <p><button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button></p>
             </div><!-- /content -->
 
-            <div class="foot" data-role="footer">
-                <h4>Page Footer</h4>
+            <div data-role="footer">
+                <div data-role="navbar">
+                <ul>
+                    <li><a rel="external" href="../pages/my_recipes" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
+                </ul>
+                </div>
             </div><!-- /footer -->
             <script language="javascript">
                 function getRecipes() {
@@ -36,7 +57,7 @@
                     }
                     return recipes;
                 }
-
+   
                 function removeRecipe() {
                     var recipes = getRecipes();
                     recipes = recipes.filter(function(recipe) {
@@ -45,7 +66,99 @@
                     localStorage.setItem("recipes", JSON.stringify(recipes));
 
                     console.log(recipes);
-                    document.location.href = "../pages/my_recipes.html";
+                    updateButtonAdd();
+                }
+
+                function getCart() {
+                    var cart = [];
+                    if (localStorage.cart) {
+                        cart = JSON.parse(localStorage.getItem("cart"));
+                    }
+                    return cart;
+                }
+
+                function addToCart() {
+                    var name = "Tacos";
+                    var img = "../img/tacos.png";
+                    var number = document.getElementById("number").value;
+                    var mealKit = true;
+                    var inCart = false;
+
+                    // Add item to cart or update if already there 
+                    cart = getCart();
+                    cart.forEach(function (item, index) {
+                        if(item.name == name) {
+                            item.number = parseInt(item.number) + parseInt(number);
+                            inCart = true;
+                        }
+                    });
+                    if (!inCart) {
+                        cart.push({
+                            name: name,
+                            img: img,
+                            number: number,
+                            mealKit: mealKit,
+                            url: "../pages/taco_recipe.html"
+                        });
+                    }
+
+                    // Restore in local storage
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    console.log(getCart());
+                }
+
+                function addToRecipes() {
+                    // Add recipe to my recipes if not already there 
+                    var name = "Tacos";
+                    var url = "../pages/taco_recipe.html";
+                    var number = document.getElementById("number").value;
+
+                    recipes = getRecipes();
+                    var inRecipes = false;
+                    recipes.forEach(function (recipe, index) {
+                        if(recipe.name == name) {
+                           inRecipes = true;
+                        }
+                    });
+                    if (!inRecipes) {
+                        recipes.push({
+                            name: name,
+                            url: url,
+                            number: number
+                        });
+                    }
+
+                    // Restore in local storage
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+                    console.log(getRecipes());
+                    updateButtonRemove();
+                }
+
+                function updateButtonAdd() {
+                    $('#inMyRecipes').html('Not saved in My Recipes');
+                    $('#myrecipeButton').attr('onclick', "addToRecipes()");
+                    $('#myrecipeButton').html('Add to My Recipes');     
+                }
+
+                function updateButtonRemove() {
+                    $('#inMyRecipes').html('Saved in My Recipes');
+                    $('#myrecipeButton').attr('onclick', "removeRecipe()");
+                    $('#myrecipeButton').html('Remove From My Recipes'); 
+                }
+
+                window.onload=function() {
+                    recipes = getRecipes();
+                    var inRecipes = false;
+                    recipes.forEach(function (recipe, index) {
+                        if(recipe.name == "Tacos") {
+                           inRecipes = true;
+                        }
+                    });
+                    if (inRecipes) {
+                        updateButtonRemove();
+                    } else {
+                        updateButtonAdd();   
+                    }
                 }
             </script>
         </div><!-- /page -->

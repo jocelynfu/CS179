@@ -24,15 +24,17 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <div id="recipesList"></div>
+                <p><a rel="external" href="../pages/shop_recipes.html" class="ui-btn ui-mini">Recipe Database</a></p>
+                <p><a rel="external" href="../pages/my_recipes.html" class="ui-btn ui-mini">My Recipes</a></p>
+                <p><a rel="external" href="../pages/add_recipe.html" class="ui-btn ui-mini">Add Your Own Recipe</a></p>
             </div><!-- /content -->
 
             <div style="text-align: center;">
                 <input type="image" id="audiobutton" style="height:100px;width:100px;" src="../img/audio.png" onclick="play()"/>
-                <audio id="audio" autoplay="autoplay" src="../audio/MyRecipes.m4a" ></audio>
+                <audio id="audio" src="../audio/MyRecipes.m4a" ></audio>
             </div>
             
-            <div class="foot" data-role="footer">
+            <div data-role="footer">
                 <div data-role="navbar">
                 <ul>
                     <li><a rel="external" href="#" data-rel="back">Back</a></li>
@@ -41,25 +43,6 @@
                 </ul>
                 </div>
             </div><!-- /footer -->
-            <script language="javascript">
-                function getRecipes() {
-                    var recipes = [];
-                    if (localStorage.recipes) {
-                        recipes = JSON.parse(localStorage.getItem("recipes"));
-                    }
-                    return recipes;
-                }
-
-                window.onload=function() {
-                    recipes = getRecipes();
-                    html = "";
-
-                    recipes.forEach(function(recipe, index) {
-                        html += "<p><a rel='external' href='" + recipe.url + "' class='ui-btn ui-mini'>" + recipe.name + "</a></p>";
-                    });
-                    document.getElementById('recipesList').innerHTML = html;
-                }
-            </script>
         </div><!-- /page -->
 
     </body>
