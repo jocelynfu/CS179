@@ -24,11 +24,19 @@ var mealData = [
 		"link": "../pages/beef_broccoli_recipe.html"
 	},
 	{
-		"mealkit_id": 3,
+		"mealkit_id": 4,
 		"name": "Chicken Pasta",
 		"meal_of_day": "dinner",
 		"price": 40,
 		"cuisine": "american",
 		"link": "../pages/beef_broccoli_recipe.html"
+	},
+	{
+		"mealkit_id": 5,
+		"name": "Omelette",
+		"meal_of_day": "breakfast",
+		"price": 40,
+		"cuisine": "american",
+		"link": "../pages/omelette_recipe.html"
 	}
 ];
