@@ -38,5 +38,13 @@ var mealData = [
 		"price": 40,
 		"cuisine": "american",
 		"link": "../pages/omelette_recipe.html"
+	},
+	{
+		"mealkit_id": 6,
+		"name": "Spicy Thai Curry Noodle Soup",
+		"meal_of_day": "dinner",
+		"price": 40,
+		"cuisine": "thai",
+		"link": "../pages/thai_recipe.html"
 	}
 ];
