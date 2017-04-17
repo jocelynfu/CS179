@@ -19,6 +19,14 @@
 
             <div role="main" class="ui-content">
                 <center><p><img src="../img/tacos.png" width='80'></center>
+
+                <p><button type="button" id="cookButton" value"cook">Begin Cooking</button></p>
+                <p><fieldset class="ui-field-contain">
+                    <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
+                    <button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
+                </fieldset></p>
+                <br></br>
+
                 <p><fieldset class="ui-field-contain">
                 <label for="number">Number of Servings</label>
                     <select name="number" id="number">
@@ -35,11 +43,7 @@
                     </select>
                 </fieldset></p>
                 <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
-                </center>
-                <p><fieldset class="ui-field-contain">
-                    <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
-                    <p><button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button></p>
-                </fieldset></p>
+                <br></br>
             </div><!-- /content -->
 
             <div class="foot" div data-role="footer">
