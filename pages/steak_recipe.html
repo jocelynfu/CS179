@@ -14,11 +14,19 @@
         <div data-role="page" id="steak_recipe">
 
             <div data-role="header">
-                <h1>Recipe example 1</h1>
+                <h1>Pan-Seared Strip Steak</h1>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
                 <center><p><img src="../img/steak.jpg" width='80'></center>
+                <p><fieldset class="ui-field-contain">
+                <p><button type="button" id="cookButton" value"cook">Begin Cooking</button></p>
+                <p><fieldset class="ui-field-contain">
+                    <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
+                    <button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
+                </fieldset></p>
+                <br></br>
+
                 <p><fieldset class="ui-field-contain">
                 <label for="number">Number of Servings</label>
                     <select name="number" id="number">
@@ -35,12 +43,11 @@
                     </select>
                 </fieldset></p>
                 <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
+                <br></br>
                 </center>
-                <p><text id="inMyRecipes"></text></p>
-                <p><button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button></p>
             </div><!-- /content -->
 
-            <div class="foot" data-role="footer">
+            <div class="foot" div data-role="footer">
                 <div data-role="navbar">
                 <ul>
                     <li><a rel="external" href="../pages/my_recipes" data-rel="back">Back</a></li>
@@ -62,7 +69,7 @@
                 function removeRecipe() {
                     var recipes = getRecipes();
                     recipes = recipes.filter(function(recipe) {
-                        return recipe.name !== "Steak";
+                        return recipe.name !== "Pan-Seared Strip Steak";
                     });
                     localStorage.setItem("recipes", JSON.stringify(recipes));
 
@@ -78,7 +85,7 @@
                 }
 
                 function addToCart() {
-                    var name = "Steak";
+                    var name = "Pan-Seared Strip Steak";
                     var img = "../img/steak.jpg";
                     var number = document.getElementById("number").value;
                     var mealKit = true;
@@ -109,7 +116,7 @@
 
                 function addToRecipes() {
                     // Add recipe to my recipes if not already there 
-                    var name = "Steak";
+                    var name = "Pan-Seared Strip Steak";
                     var url = "../pages/steak_recipe.html";
                     var number = document.getElementById("number").value;
 
@@ -150,7 +157,7 @@
                     recipes = getRecipes();
                     var inRecipes = false;
                     recipes.forEach(function (recipe, index) {
-                        if(recipe.name == "Steak") {
+                        if(recipe.name == "Pan-Seared Strip Steak") {
                            inRecipes = true;
                         }
                     });
