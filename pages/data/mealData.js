@@ -45,6 +45,6 @@ var mealData = [
 		"meal_of_day": "dinner",
 		"price": 40,
 		"cuisine": "thai",
-		"link": "../pages/thai_recipe.html"
+		"link": "../pages/thaicurry_recipe.html"
 	}
 ];

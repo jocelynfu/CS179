@@ -14,7 +14,7 @@
         <div data-role="page" id="thaicurry_recipe">
 
             <div data-role="header">
-                <h1>Pan-Seared Strip Steak</h1>
+                <h1>Spicy Thai Curry Noodle Soup</h1>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
@@ -69,7 +69,7 @@
                 function removeRecipe() {
                     var recipes = getRecipes();
                     recipes = recipes.filter(function(recipe) {
-                        return recipe.name !== "Pan-Seared Strip Steak";
+                        return recipe.name !== "Spicy Thai Curry Noodle Soup";
                     });
                     localStorage.setItem("recipes", JSON.stringify(recipes));
 
