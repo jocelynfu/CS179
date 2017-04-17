@@ -20,6 +20,14 @@ var mealData = [
 		"name": "Beef Broccoli Stir-Fry",
 		"meal_of_day": "dinner",
 		"price": 40,
+		"cuisine": "chinese",
+		"link": "../pages/beef_broccoli_recipe.html"
+	},
+	{
+		"mealkit_id": 3,
+		"name": "Chicken Pasta",
+		"meal_of_day": "dinner",
+		"price": 40,
 		"cuisine": "american",
 		"link": "../pages/beef_broccoli_recipe.html"
 	}
