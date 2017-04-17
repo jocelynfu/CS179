@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
+</head>
+    <body>
+         <!-- Start of cook page -->
+        <div data-role="page" id="omelette_recipe">
+
+            <div data-role="header">
+                <h1>Omelette</h1>
+            </div><!-- /header -->
+
+            <div role="main" class="ui-content">
+                <center><p><img src="../img/omelette.jpg" width='80'></center>
+                <p><fieldset class="ui-field-contain">
+                <p><button type="button" id="cookButton" value"cook">Begin Cooking</button></p>
+                <p><fieldset class="ui-field-contain">
+                    <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
+                    <button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
+                </fieldset></p>
+                <br></br>
+
+                <p><fieldset class="ui-field-contain">
+                <label for="number">Number of Servings</label>
+                    <select name="number" id="number">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </fieldset></p>
+                <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
+                <br></br>
+                </center>
+            </div><!-- /content -->
+
+            <div class="foot" div data-role="footer">
+                <div data-role="navbar">
+                <ul>
+                    <li><a rel="external" href="../pages/my_recipes" data-rel="back">Back</a></li>
+                    <li><a rel="external" href="../">Home</a></li>
+                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
+                </ul>
+                </div>
+            </div><!-- /footer -->
+            
+            <script language="javascript">
+                function getRecipes() {
+                    var recipes = [];
+                    if (localStorage.recipes) {
+                        recipes = JSON.parse(localStorage.getItem("recipes"));
+                    }
+                    return recipes;
+                }
+
+                function removeRecipe() {
+                    var recipes = getRecipes();
+                    recipes = recipes.filter(function(recipe) {
+                        return recipe.name !== "Omelette";
+                    });
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+
+                    console.log(recipes);
+                    updateButtonAdd();
+                }
+                function getCart() {
+                    var cart = [];
+                    if (localStorage.cart) {
+                        cart = JSON.parse(localStorage.getItem("cart"));
+                    }
+                    return cart;
+                }
+
+                function addToCart() {
+                    var name = "Omelette";
+                    var img = "../img/omelette.jpg";
+                    var number = document.getElementById("number").value;
+                    var mealKit = true;
+                    var inCart = false;
+
+                    // Add item to cart or update if already there 
+                    cart = getCart();
+                    cart.forEach(function (item, index) {
+                        if(item.name == name) {
+                            item.number = parseInt(item.number) + parseInt(number);
+                            inCart = true;
+                        }
+                    });
+                    if (!inCart) {
+                        cart.push({
+                            name: name,
+                            img: img,
+                            number: number,
+                            mealKit: mealKit,
+                            url: "../pages/omelette_recipe.html"
+                        });
+                    }
+
+                    // Restore in local storage
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    console.log(getCart());
+                }
+
+                function addToRecipes() {
+                    // Add recipe to my recipes if not already there 
+                    var name = "Omelette";
+                    var url = "../pages/omelette_recipe.html";
+                    var number = document.getElementById("number").value;
+
+                    recipes = getRecipes();
+                    var inRecipes = false;
+                    recipes.forEach(function (recipe, index) {
+                        if(recipe.name == name) {
+                           inRecipes = true;
+                        }
+                    });
+                    if (!inRecipes) {
+                        recipes.push({
+                            name: name,
+                            url: url,
+                            number: number
+                        });
+                    }
+
+                    // Restore in local storage
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+                    console.log(getRecipes());
+                    updateButtonRemove();
+                }
+
+                function updateButtonAdd() {
+                    $('#inMyRecipes').html('Not saved in My Recipes');
+                    $('#myrecipeButton').attr('onclick', "addToRecipes()");
+                    $('#myrecipeButton').html('Add to My Recipes');     
+                }
+
+                function updateButtonRemove() {
+                    $('#inMyRecipes').html('Saved in My Recipes');
+                    $('#myrecipeButton').attr('onclick', "removeRecipe()");
+                    $('#myrecipeButton').html('Remove From My Recipes'); 
+                }
+
+                window.onload=function() {
+                    recipes = getRecipes();
+                    var inRecipes = false;
+                    recipes.forEach(function (recipe, index) {
+                        if(recipe.name == "Omelette") {
+                           inRecipes = true;
+                        }
+                    });
+                    if (inRecipes) {
+                        updateButtonRemove();
+                    } else {
+                        updateButtonAdd();   
+                    }
+                }
+            </script>
+            </script>
+        </div><!-- /page -->
+    </body>
+</html>
