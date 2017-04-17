@@ -11,14 +11,14 @@
 </head>
     <body>
          <!-- Start of cook page -->
-        <div data-role="page" id="steak_recipe">
+        <div data-role="page" id="beef_broccoli_recipe">
 
             <div data-role="header">
-                <h1>Pan-Seared Strip Steak</h1>
+                <h1>Beef Broccoli Stir-Fry</h1>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <center><p><img src="../img/steak.jpg" width='80'></center>
+                <center><p><img src="../img/beefbroccoli.jpg" width='80'></center>
                 <p><fieldset class="ui-field-contain">
                     <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
                     <button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
@@ -69,7 +69,7 @@
                 function removeRecipe() {
                     var recipes = getRecipes();
                     recipes = recipes.filter(function(recipe) {
-                        return recipe.name !== "Pan-Seared Strip Steak";
+                        return recipe.name !== "Beef Broccoli Stir-Fry";
                     });
                     localStorage.setItem("recipes", JSON.stringify(recipes));
 
@@ -85,8 +85,8 @@
                 }
 
                 function addToCart() {
-                    var name = "Pan-Seared Strip Steak";
-                    var img = "../img/steak.jpg";
+                    var name = "Beef Broccoli Stir-Fry";
+                    var img = "../img/beefbroccoli.jpg";
                     var number = document.getElementById("number").value;
                     var mealKit = true;
                     var inCart = false;
@@ -105,7 +105,7 @@
                             img: img,
                             number: number,
                             mealKit: mealKit,
-                            url: "../pages/steak_recipe.html"
+                            url: "../pages/beef_broccoli_recipe.html"
                         });
                     }
 
@@ -116,8 +116,8 @@
 
                 function addToRecipes() {
                     // Add recipe to my recipes if not already there 
-                    var name = "Pan-Seared Strip Steak";
-                    var url = "../pages/steak_recipe.html";
+                    var name = "Beef Broccoli Stir-Fry";
+                    var url = "../pages/beef_broccoli_recipe.html";
                     var number = document.getElementById("number").value;
 
                     recipes = getRecipes();
@@ -157,7 +157,7 @@
                     recipes = getRecipes();
                     var inRecipes = false;
                     recipes.forEach(function (recipe, index) {
-                        if(recipe.name == "Pan-Seared Strip Steak") {
+                        if(recipe.name == "Beef Broccoli Stir-Fry") {
                            inRecipes = true;
                         }
                     });
