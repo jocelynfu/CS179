@@ -14,11 +14,19 @@
         <div data-role="page" id="taco_recipe">
 
             <div data-role="header">
-                <h1>Recipe example 1</h1>
+                <h1>Chipotle Shrimp Tacos</h1>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
                 <center><p><img src="../img/tacos.png" width='80'></center>
+
+                <p><button type="button" id="cookButton" value"cook">Begin Cooking</button></p>
+                <p><fieldset class="ui-field-contain">
+                    <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
+                    <button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
+                </fieldset></p>
+                <br></br>
+
                 <p><fieldset class="ui-field-contain">
                 <label for="number">Number of Servings</label>
                     <select name="number" id="number">
@@ -35,12 +43,10 @@
                     </select>
                 </fieldset></p>
                 <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
-                </center>
-                <p><text id="inMyRecipes"></text></p>
-                <p><button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button></p>
+                <br></br>
             </div><!-- /content -->
 
-            <div data-role="footer">
+            <div class="foot" div data-role="footer">
                 <div data-role="navbar">
                 <ul>
                     <li><a rel="external" href="../pages/my_recipes" data-rel="back">Back</a></li>
@@ -61,7 +67,7 @@
                 function removeRecipe() {
                     var recipes = getRecipes();
                     recipes = recipes.filter(function(recipe) {
-                        return recipe.name !== "Tacos";
+                        return recipe.name !== "Chipotle Shrimp Tacos";
                     });
                     localStorage.setItem("recipes", JSON.stringify(recipes));
 
@@ -78,7 +84,7 @@
                 }
 
                 function addToCart() {
-                    var name = "Tacos";
+                    var name = "Chipotle Shrimp Tacos";
                     var img = "../img/tacos.png";
                     var number = document.getElementById("number").value;
                     var mealKit = true;
@@ -109,7 +115,7 @@
 
                 function addToRecipes() {
                     // Add recipe to my recipes if not already there 
-                    var name = "Tacos";
+                    var name = "Chipotle Shrimp Tacos";
                     var url = "../pages/taco_recipe.html";
                     var number = document.getElementById("number").value;
 
@@ -150,7 +156,7 @@
                     recipes = getRecipes();
                     var inRecipes = false;
                     recipes.forEach(function (recipe, index) {
-                        if(recipe.name == "Tacos") {
+                        if(recipe.name == "Chipotle Shrimp Tacos") {
                            inRecipes = true;
                         }
                     });
