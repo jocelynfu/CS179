@@ -62,7 +62,7 @@
                 function removeRecipe() {
                     var recipes = getRecipes();
                     recipes = recipes.filter(function(recipe) {
-                        return recipe.name !== "Chicken";
+                        return recipe.name !== "Grandma's Chicken Recipe";
                     });
                     localStorage.setItem("recipes", JSON.stringify(recipes));
 
@@ -78,7 +78,7 @@
                 }
 
                 function addToCart() {
-                    var name = "Chicken";
+                    var name = "Grandma's Chicken Recipe";
                     var img = "../img/chicken.png";
                     var number = document.getElementById("number").value;
                     var mealKit = true;
@@ -109,7 +109,7 @@
 
                 function addToRecipes() {
                     // Add recipe to my recipes if not already there 
-                    var name = "Chicken";
+                    var name = "Grandma's Chicken Recipe";
                     var url = "../pages/input_recipe.html";
                     var number = document.getElementById("number").value;
 
@@ -150,7 +150,7 @@
                     recipes = getRecipes();
                     var inRecipes = false;
                     recipes.forEach(function (recipe, index) {
-                        if(recipe.name == "Chicken") {
+                        if(recipe.name == "Grandma's Chicken Recipe") {
                            inRecipes = true;
                         }
                     });
