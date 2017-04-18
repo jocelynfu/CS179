@@ -20,26 +20,24 @@
         <div data-role="page" id="my_recipes">
 
             <div data-role="header">
-                <h1>My Recipes</h1>
+                <div class="ui-btn-left">
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/Icons/back.png" width='29'></a>
+                    <a rel="external" href="../"><img src="../img/Icons/home.png" width='29'></a>
+                 </div>
+                <h2> My Recipes</h2>
+                <div class="ui-btn-right">
+                    <a rel="external" href="../pages/cart.html"><img src="../img/Icons/cart.png" width='29'></a>
+                </div>
+
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
                 <div id="recipesList"></div>
             </div><!-- /content -->
-
-            <div style="text-align: center;">
-                <input type="image" id="audiobutton" style="height:100px;width:100px;" src="../img/audio.png" onclick="play()"/>
-                <audio id="audio" autoplay="autoplay" src="../audio/MyRecipes.m4a" ></audio>
-            </div>
             
             <div class="foot" data-role="footer">
-                <div data-role="navbar">
-                <ul>
-                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
-                    <li><a rel="external" href="../">Home</a></li>
-                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
-                </ul>
-                </div>
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <audio id="audio" autoplay="autoplay" src="../audio/MyRecipes.m4a" ></audio></center>
             </div><!-- /footer -->
             <script language="javascript">
                 function getRecipes() {
