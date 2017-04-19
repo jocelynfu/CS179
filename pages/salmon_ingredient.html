@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
+    <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
+</head>
+    <body>
+         <!-- Start of cook page -->
+        <div data-role="page" id="salmon_ingredient">
+
+            <div data-role="header">
+                <div class="ui-btn-left">
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='35'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
+                 </div>
+                <h2> Salmon </h2>
+                <div class="ui-btn-right">
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='35'></a>
+                </div>
+            </div><!-- /header -->
+
+            <div role="main" class="ui-content">
+                <center><p><img src="../img/salmon.jpg" width='80'>
+                <p><fieldset class="ui-field-contain" style="width:200px">
+                <p><label for="volume">Volume of Bags</label></p>
+                    <select name="volume" id="volume" data-theme="a">
+                        <option value="10">10 oz</option>
+                        <option value="20">20 oz</option>
+                        <option value="30">30 oz</option>
+                    </select>
+                </fieldset></p>
+                <p><fieldset class="ui-field-contain" style="width:200px">
+                <p><label for="number">Number of Bags</label></p>
+                    <select name="number" id="number" data-theme="a">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </fieldset></p>
+                <p><fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>Options:</legend>
+                    <input type="checkbox" name="chopped" id="chopped">
+                    <label for="chopped">Pre-chopped</label>
+                    <input type="checkbox" name="seasoned" id="seasoned">
+                    <label for="seasoned">Pre-seasoned</label>
+                </fieldset></p>
+                <p><button type="button" value"Add to Cart" style="width:150px" onclick="addToCart()" data-theme="f">Add to Cart</button></p>
+                <br></br>
+                </center>
+
+                
+            </div><!-- /content -->
+
+
+            <div class="foot" data-role="footer">
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <audio id="audio" autoplay="autoplay" src="../audio/SingleIngredient.m4a" ></audio>
+                </center>
+            </div><!-- /footer -->
+
+            <div data-role="popup" id="popupCarted">
+                <p>Added to Cart<p>
+            </div><!-- /popup -->
+            <script language="javascript">
+                function getCart() {
+                    var cart = [];
+                    if (localStorage.cart) {
+                        cart = JSON.parse(localStorage.getItem("cart"));
+                    }
+                    return cart;
+                }
+
+                function addToCart() {
+                    var name = "Salmon";
+                    var img = "../img/salmon.jpg";
+                    var volume = document.getElementById("volume").value;
+                    var number = document.getElementById("number").value;
+                    var chopped = $('#chopped').is(':checked');
+                    var seasoned = $('#seasoned').is(':checked');;
+                    var mealKit = false;
+                    var inCart = false;
+
+                    // Add item to cart or update if already there 
+                    cart = getCart();
+                    cart.forEach(function (item, index) {
+                        if(item.name == name && item.volume == volume && item.chopped == chopped && item.seasoned == seasoned) {
+                            item.number = parseInt(item.number) + parseInt(number);
+                            inCart = true;
+                        }
+                    });
+                    if (!inCart) {
+                        cart.push({
+                            name: name,
+                            img: img,
+                            volume: volume,
+                            number: number,
+                            chopped: chopped,
+                            seasoned: seasoned,
+                            mealKit: mealKit
+                        });
+                    }
+
+                    // Restore in local storage
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    console.log(getCart());
+                    $( "#popupCarted" ).popup( "open" );
+                }
+
+                function play(){
+                    var audio = document.getElementById("audio");
+                    audio.play();
+                }
+            </script>
+        </div><!-- /page -->
+    </body>
+</html>
