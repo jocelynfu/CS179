@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
@@ -29,28 +29,33 @@
                 <center><p><img src="../img/chicken.png" width='80'></center>
                 <p><fieldset class="ui-field-contain" align="center">
                     <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
-                    <button data-theme="a" type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
+                    <button data-theme="h" type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
                 </fieldset></p>
-                <p><button data-theme="a" type="button" id="cookButton" value"cook">Begin Cooking</button></p>
+                <p><button data-theme="h" type="button" id="cookButton" value"cook">Begin Cooking</button></p>
                 <br>
 
                 <p><fieldset class="ui-field-contain" align="center">
                 <legend>Order:</legend>
                 <label for="number">Number of Servings</label>
-                    <select name="number" id="number">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
+                    <center>
+                        <div style="width:150px">
+                        <select name="number" id="number" data-theme="b">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        </div>
+                    </center>
                 </fieldset></p>
-                <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
+                <center>
+                <p><button type="button" value"Add to Cart" style="width:200px" onclick="addToCart()" data-theme="a">Add to Cart</button></p>
                 <br></br>
                 </center>
             </div><!-- /content -->
