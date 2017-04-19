@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
     <body>
@@ -14,7 +15,11 @@
         <div data-role="page" id="camera">
 
             <div data-role="header">
-                <h1>Camera</h1>
+                <div class="ui-btn-left">
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                 </div>
+                <h2> Camera </h2>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
@@ -25,13 +30,9 @@
             </div><!-- /content -->
 
             <div class="foot" data-role="footer">
-                <div data-role="navbar">
-                <ul>
-                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
-                    <li><a rel="external" href="../">Home</a></li>
-                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
-                </ul>
-                </div>
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+<!--                 <audio id="audio" autoplay="autoplay" src="../audio/newRecipe.m4a" ></audio> -->
+                </center>
             </div><!-- /footer -->
         </div><!-- /page -->
     </body>
