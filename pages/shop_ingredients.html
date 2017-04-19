@@ -16,12 +16,12 @@
 
             <div data-role="header">
                 <div class="ui-btn-left">
-                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
-                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='35'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
                  </div>
                 <h2> Shop Ingredients </h2>
                 <div class="ui-btn-right">
-                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='29'></a>
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='35'></a>
                 </div>
             </div><!-- /header -->
 
@@ -34,11 +34,11 @@
                         <legend>Ingredients</legend>
                         <input type="checkbox" name="fruits" id="fruits" class="type" checked=true>
                         <label for="fruits">Fruits</label>
-                        <input type="checkbox" name="vegetables" id="vegetables" class="type">
+                        <input type="checkbox" name="vegetables" id="vegetables" class="type" checked=true>
                         <label for="vegetables">Vegetables</label>
-                        <input type="checkbox" name="meats" id="meats" class="type">
+                        <input type="checkbox" name="meats" id="meats" class="type" checked=true> 
                         <label for="meats">Meats</label>
-                        <input type="checkbox" name="seafood" id="seafood" class="type">
+                        <input type="checkbox" name="seafood" id="seafood" class="type" checked=true>
                         <label for="seafood">Seafood</label>
                     </fieldset>
                   </form>
@@ -87,7 +87,7 @@
                 function displayIngredient(ing) {
                     ingList=""
                     ing.forEach(function(s){
-                         ingList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\"> <button data-theme=\"b\" style=\"line-height:0.3\">"+s.name+"</button></a></p>";
+                         ingList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\">" + s.name + "</button></a></p>";
                     });
                     document.getElementById('ingredients').innerHTML = ingList
                 }

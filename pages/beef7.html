@@ -16,8 +16,8 @@
 
             <div data-role="header">
                 <div class="ui-btn-left">
-                    <a rel="external" href="../pages/beef6.html" data-rel="back" align="left"><img src="../img/Icons/back.png" width='29'></a>
-                    <a rel="external" href="../"><img src="../img/Icons/home.png" width='29'></a>
+                    <a rel="external" href="../pages/beef6.html" data-rel="back" align="left"><img src="../img/Icons/back.png" width='35'></a>
+                    <a rel="external" href="../"><img src="../img/Icons/home.png" width='35'></a>
                  </div>
                 <h1>Beef Broccoli Stir-Fry</h1>
             </div><!-- /header -->
@@ -25,9 +25,10 @@
             <center><div role="main" class="ui-content">
                 <p><div id="recipeInfo">
                 <h1>Cook and stir for 2 minutes.</h1>
-                <!-- need to add timer -->
+                <p><button type="button" id="time" value"Start Timer" onclick="beginTimer()">Start Timer</button></p>
+                <div>Time left = <span id="timer"></span></div>
                 <p><a href="../pages/beef8.html">
-                    <button data-theme="a" style="height:50px;">
+                    <button class="button">
                             Next
                     </button></a></p>
                 </a></p>
@@ -35,8 +36,48 @@
 
             <div class="foot" data-role="footer">
                 <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
-                <audio id="audio" autoplay="autoplay" src="../audio/MyRecipes.m4a" ></audio></center>
+                <audio id="audio" autoplay="autoplay" src="../audio/Beef7.m4a" ></audio></center>
             </div><!-- /footer -->
+            <script language="javascript">
+                document.getElementById('timer').innerHTML = 02 + ":" + "00";
+                function beginTimer() {
+                    $('#time').html('Pause Timer');
+                    $('#time').attr('onclick', "pauseTimer()");
+                    var presentTime = document.getElementById('timer').innerHTML;
+                    var timeArray = presentTime.split(/[:]+/);
+                    var m = timeArray[0];
+                    var s = checkSecond((timeArray[1] - 1));
+                    if(s==59){m=m-1}
+                    //if(m<0){alert('timer completed')}
+  
+                    document.getElementById('timer').innerHTML = m + ":" + s;
+                    t = setTimeout(beginTimer, 1000);
+                    if (s==0) {
+                        if (m == 0) {
+                            clearTimeout(t);
+                            document.getElementById('timer').innerHTML = 04 + ":" + "00";
+                            $('#time').attr('onclick', "beginTimer()");
+                            $('#time').html('Restart Timer');
+                        }
+                    }
+                }
+
+                function checkSecond(sec) {
+                    if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+                    if (sec < 0) {sec = "59"};
+                    return sec;
+                }
+
+
+                function pauseTimer() {
+                    $('#time').attr('onclick', "beginTimer()");
+                    $('#time').html('Continue Timer'); 
+                    clearTimeout(t);
+                //     $('#inMyRecipes').html('Saved in My Recipes');
+                //     $('#myrecipeButton').attr('onclick', "removeRecipe()");
+                //     $('#myrecipeButton').html('Remove From My Recipes'); 
+                }
+            </script>
         </div><!-- /page -->
     </body>
 </html>

@@ -16,12 +16,12 @@
 
             <div data-role="header">
                 <div class="ui-btn-left">
-                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
-                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='35'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
                  </div>
                 <h2> Shop Recipes </h2>
                 <div class="ui-btn-right">
-                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='29'></a>
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='35'></a>
                 </div>
             </div><!-- /header -->
 
@@ -112,7 +112,7 @@
                 function displayMeal(meals) {
                     mealsList=""
                     meals.forEach(function(s){
-                         mealsList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\"> <button data-theme=\"a\" style=\"line-height:0.3\">"+s.name+"</button></a></p>";
+                         mealsList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\">" + s.name + "</button></a></p>";
                     });
                     document.getElementById('mealKits').innerHTML = mealsList
                 }
