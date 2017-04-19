@@ -112,7 +112,7 @@
                 function displayMeal(meals) {
                     mealsList=""
                     meals.forEach(function(s){
-                         mealsList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\"> <button data-theme=\"a\" style=\"line-height:0.3\">"+s.name+"</button></a></p>";
+                         mealsList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\">" + s.name + "</button></a></p>";
                     });
                     document.getElementById('mealKits').innerHTML = mealsList
                 }

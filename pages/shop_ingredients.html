@@ -87,7 +87,7 @@
                 function displayIngredient(ing) {
                     ingList=""
                     ing.forEach(function(s){
-                         ingList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\"> <button data-theme=\"b\" style=\"line-height:0.3\">"+s.name+"</button></a></p>";
+                         ingList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\">" + s.name + "</button></a></p>";
                     });
                     document.getElementById('ingredients').innerHTML = ingList
                 }
