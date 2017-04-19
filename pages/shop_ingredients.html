@@ -8,16 +8,25 @@
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
+    <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
     <body>
          <!-- Start of cook page -->
         <div data-role="page" id="single_ingredient">
 
             <div data-role="header">
-                <h1>Shop Ingredients</h1>
+                <div class="ui-btn-left">
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                 </div>
+                <h2> Shop Ingredients </h2>
+                <div class="ui-btn-right">
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='29'></a>
+                </div>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
+                <center>
                 <a href="#ingredient_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Type</a>
                 <div data-role="popup" id="ingredient_filter" class="ui-content" style="min-width:250px;">
                   <form>
@@ -34,23 +43,15 @@
                     </fieldset>
                   </form>
                 </div>
+                </center>
                 <div id="ingredients">
                 </div>
             </div><!-- /content -->
 
-            <div style="text-align: center;">
-                <input type="image" id="audiobutton" style="height:100px;width:100px;" src="../img/audio.png" onclick="play()"/>
-                <audio id="audio" autoplay="autoplay" src="../audio/ShopIngredients.m4a" ></audio>
-            </div>
-
             <div class="foot" data-role="footer">
-                <div data-role="navbar">
-                <ul>
-                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
-                    <li><a rel="external" href="../">Home</a></li>
-                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
-                </ul>
-                </div>
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <audio id="audio" autoplay="autoplay" src="../audio/ShopIngredients.m4a" ></audio>
+                </center>
             </div><!-- /footer -->
             <script src="data/ingredientData.js"></script>
             <script language="javascript">

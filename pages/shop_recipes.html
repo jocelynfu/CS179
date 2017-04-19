@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
     <body>
@@ -14,7 +15,14 @@
         <div data-role="page" id="shop_recipes">
 
             <div data-role="header">
-                <h1>Find Recipes</h1>
+                <div class="ui-btn-left">
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                 </div>
+                <h2> Shop Recipes </h2>
+                <div class="ui-btn-right">
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='29'></a>
+                </div>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
