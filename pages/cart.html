@@ -24,7 +24,7 @@
 
             <div role="main" class="ui-content">
                 <p><div id="itemsList"></div></p>
-                <p><button type="button" value"Add to Cart" onclick="orderCart()">Order</button></p>
+                <p><center><button data-theme="f" type="button" value"Add to Cart" style="width:150px" onclick="orderCart()">Order</button></center></p>
             </div><!-- /content -->
 
             <div class="foot" data-role="footer">
@@ -92,9 +92,9 @@
                             li.innerHTML=li.innerHTML + item.number + " " + item.volume + "oz. of " + item.name;
                             if(item.chopped) li.innerHTML += " pre-chopped ";
                             if(item.seasoned) li.innerHTML += " pre-seasoned ";
-                            li.innerHTML += " <button type='button' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
+                            li.innerHTML += " <button type='button' data-theme='f'onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
                         } else {
-                            li.innerHTML=li.innerHTML + item.number + " " + item.name + " <button type='button' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
+                            li.innerHTML=li.innerHTML + item.number + " " + item.name + " <button type='button' data-theme='f' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
                         }     
                     }
                 }
