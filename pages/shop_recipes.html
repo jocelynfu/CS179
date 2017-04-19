@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<!--     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
@@ -61,23 +61,16 @@
                   </form>
                 </div>
 
-                <div id="mealKits">
-                </div>
+                <center>
+                    <div id="mealKits"> </div>
+                </center>
             </div><!-- /content -->
 
-            <div style="text-align: center;">
-                <input type="image" id="audiobutton" style="height:100px;width:100px;" src="../img/audio.png" onclick="play()"/>
-                <audio id="audio" autoplay="autoplay" src="../audio/ShopMealKits.m4a" ></audio>
-            </div>
 
             <div class="foot" data-role="footer">
-                <div data-role="navbar">
-                <ul>
-                    <li><a rel="external" href="#" data-rel="back">Back</a></li>
-                    <li><a rel="external" href="../">Home</a></li>
-                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
-                </ul>
-                </div>
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <audio id="audio" autoplay="autoplay" src="../audio/ShopMealKits.m4a" ></audio>
+                </center>
             </div><!-- /footer -->
             <script src="data/mealData.js"></script>
             <script language="javascript">
@@ -117,10 +110,9 @@
                 }
 
                 function displayMeal(meals) {
-                    console.log(meals);
                     mealsList=""
                     meals.forEach(function(s){
-                         mealsList += "<p><a rel='external' href="+s.link+" class='ui-btn ui-mini'>"+s.name+"</a></p>";
+                         mealsList += "<p><a rel='external' href="+s.link+" class=\"ui-btn\" style=\"width: 250px; height:40px;\">" + s.name + "</button></a></p>";
                     });
                     document.getElementById('mealKits').innerHTML = mealsList
                 }
