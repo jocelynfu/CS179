@@ -22,12 +22,12 @@
 
             <div data-role="header">
                 <div class="ui-btn-left">
-                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
-                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='35'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
                  </div>
-                <h2> My Recipes</h2>
+                <h1> My Recipes</h1>
                 <div class="ui-btn-right">
-                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='29'></a>
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='35'></a>
                 </div>
 
             </div><!-- /header -->
@@ -57,7 +57,7 @@
 
                     recipes.forEach(function(recipe, index) {
                         // html += "<p><a rel='external' href='" + recipe.url + "' class='ui-btn ui-mini'>" + recipe.name + "</a></p>";
-                        html += "<p><a rel='external' href="+recipe.url+" class=\"ui-btn\" style=\"width: 250px; height:40px;\"> <button data-theme=\"b\" style=\"line-height:0.3\">"+recipe.name+"</button></a></p>";
+                        html += "<p><a rel='external' href="+recipe.url+" class=\"ui-btn\" style=\"width: 250px; height:40px;\"><button data-theme=\"h\"style=\"line-height:0.5\">" + recipe.name +"</button></a></p>";
                     });
                     document.getElementById('recipesList').innerHTML = html;
                 }

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
@@ -12,21 +12,21 @@
 </head>
     <body>
          <!-- Start of cook page -->
-        <div data-role="page" id="single_ingredient">
+        <div data-role="page" id="salmon_ingredient">
 
             <div data-role="header">
                 <div class="ui-btn-left">
                     <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='35'></a>
                     <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
                  </div>
-                <h2> Honey Crisp Apples </h2>
+                <h2> Salmon </h2>
                 <div class="ui-btn-right">
                     <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='35'></a>
                 </div>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <center><p><img src="../img/apple.jpg" width='80'>
+                <center><p><img src="../img/salmon.jpg" width='80'>
                 <p><fieldset class="ui-field-contain" style="width:200px">
                 <p><label for="volume">Volume of Bags</label></p>
                     <select name="volume" id="volume" data-theme="a">
@@ -52,12 +52,12 @@
                 </fieldset></p>
                 <p><fieldset data-role="controlgroup" data-type="horizontal">
                     <legend>Options:</legend>
-                    <input type="checkbox" name="chopped" id="chopped" data-theme="b">
+                    <input type="checkbox" name="chopped" id="chopped">
                     <label for="chopped">Pre-chopped</label>
-                    <input type="checkbox" name="seasoned" id="seasoned" data-theme="b">
+                    <input type="checkbox" name="seasoned" id="seasoned">
                     <label for="seasoned">Pre-seasoned</label>
                 </fieldset></p>
-                <p><button type="button" value"Add to Cart" style="width:200px" onclick="addToCart()" data-theme="h">Add to Cart</button></p>
+                <p><button type="button" value"Add to Cart" style="width:150px" onclick="addToCart()" data-theme="f">Add to Cart</button></p>
                 <br></br>
                 </center>
 
@@ -84,8 +84,8 @@
                 }
 
                 function addToCart() {
-                    var name = "placeholder";
-                    var img = "../img/apple.jpg";
+                    var name = "Salmon";
+                    var img = "../img/salmon.jpg";
                     var volume = document.getElementById("volume").value;
                     var number = document.getElementById("number").value;
                     var chopped = $('#chopped').is(':checked');

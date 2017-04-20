@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<!--     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
     <body>
@@ -14,7 +15,14 @@
         <div data-role="page" id="taco_recipe">
 
             <div data-role="header">
-                <h1>Chipotle Shrimp Tacos</h1>
+                <div class="ui-btn-left">
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                 </div>
+                <h2> Chipotle Shrimp Tacos </h2>
+                <div class="ui-btn-right">
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='29'></a>
+                </div>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
@@ -22,10 +30,10 @@
 
                 <p><fieldset class="ui-field-contain" align="center">
                     <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
-                    <button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
+                    <button type="button" id="myrecipeButton" value="remove" data-theme="a" onclick="removeRecipe()">Remove from My Recipes</button>
                 </fieldset></p>
-                <p><button type="button" id="cookButton" value"cook">Begin Cooking</button></p>
-                <br></br>
+                <p><button type="button" id="cookButton" data-theme="a" value="cook">Begin Cooking</button></p>
+                <br>
 
                 <p><fieldset class="ui-field-contain" align="center">
                 <legend>Order:</legend>
