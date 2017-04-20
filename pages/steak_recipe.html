@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<!--     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
     <body>
@@ -14,22 +15,35 @@
         <div data-role="page" id="steak_recipe">
 
             <div data-role="header">
-                <h1>Pan-Seared Strip Steak</h1>
+                <div class="ui-btn-left">
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                 </div>
+                <h2> Pan-Seared Strip Steak </h2>
+                <div class="ui-btn-right">
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='29'></a>
+                </div>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <center><p><img src="../img/steak.jpg" width='80'></center>
-                <p><fieldset class="ui-field-contain" align="center">
-                    <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
-                    <button type="button" id="myrecipeButton" value"remove" onclick="removeRecipe()">Remove from My Recipes</button>
-                </fieldset></p>
-                <p><button type="button" id="cookButton" value"cook">Begin Cooking</button></p>
-                <br></br>
+                <center>
+                    <img src="../img/steak.jpg" width='80'>
+                    <br> </br>
+                    <p> Sample recipe details </p>
+                </center>
 
-                <p><fieldset class="ui-field-contain" align="center">
+
+                <p><fieldset class="ui-field-contain" align="center" >
+                    <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
+                    <button type="button" id="myrecipeButton" value="remove" data-theme="a" onclick="removeRecipe()">Remove from My Recipes</button>
+                </fieldset></p>
+                <p><button type="button" id="cookButton" data-theme="a" value="cook">Begin Cooking</button></p>
+                <br>
+                <center>
+                <p><fieldset class="ui-field-contain" align="center" style="width:200px">
                 <legend>Order:</legend>
                 <label for="number">Number of Servings</label>
-                    <select name="number" id="number">
+                    <select name="number" id="number" data-theme="b">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -42,21 +56,18 @@
                         <option value="10">10</option>
                     </select>
                 </fieldset></p>
-                <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
-                <br></br>
+                <div style="width:200px;">
+                <p><button type="button" value="Add to Cart" data-theme="h" onclick="addToCart()">Add to Cart</button></p>
+                </div>
                 </center>
             </div><!-- /content -->
+            <br> <br>
 
-            <div class="foot" div data-role="footer">
-                <div data-role="navbar">
-                <ul>
-                    <li><a rel="external" href="../pages/my_recipes" data-rel="back">Back</a></li>
-                    <li><a rel="external" href="../">Home</a></li>
-                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
-                </ul>
-                </div>
+            <div class="foot" data-role="footer">
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <!-- <audio id="audio" autoplay="autoplay" src="audio/HomePage.m4a" ></audio> --></center>
             </div><!-- /footer -->
-            
+
             <script language="javascript">
                 function getRecipes() {
                     var recipes = [];
@@ -65,17 +76,18 @@
                     }
                     return recipes;
                 }
-
+   
                 function removeRecipe() {
                     var recipes = getRecipes();
                     recipes = recipes.filter(function(recipe) {
-                        return recipe.name !== "Pan-Seared Strip Steak";
+                        return recipe.name !== "Omelette";
                     });
                     localStorage.setItem("recipes", JSON.stringify(recipes));
 
                     console.log(recipes);
                     updateButtonAdd();
                 }
+
                 function getCart() {
                     var cart = [];
                     if (localStorage.cart) {
@@ -116,7 +128,7 @@
 
                 function addToRecipes() {
                     // Add recipe to my recipes if not already there 
-                    var name = "Pan-Seared Strip Steak";
+                    var name = "Omelette";
                     var url = "../pages/steak_recipe.html";
                     var number = document.getElementById("number").value;
 
@@ -167,7 +179,6 @@
                         updateButtonAdd();   
                     }
                 }
-            </script>
             </script>
         </div><!-- /page -->
     </body>

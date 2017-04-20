@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
     <body>
@@ -14,25 +15,35 @@
         <div data-role="page" id="beef_broccoli_recipe">
 
             <div data-role="header">
-                <h1>Beef Broccoli Stir-Fry</h1>
+                <div class="ui-btn-left">
+                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='29'></a>
+                    <a rel="external" href="../"><img src="../img/icons/home.png" width='29'></a>
+                 </div>
+                <h2> Beef Broccoli Stir-Fry</h2>
+                <div class="ui-btn-right">
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='29'></a>
+                </div>
             </div><!-- /header -->
 
+
             <div role="main" class="ui-content">
-                <center><p><img src="../img/beefbroccoli.jpg" width='80'></center>
+                <center>
+                    <img src="../img/beefbroccoli.jpg" width='80'>
+                </center>
                 <p><fieldset class="ui-field-contain" align="center">
                     <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
                     <button type="button" id="myrecipeButton" value="remove" onclick="removeRecipe()">Remove from My Recipes</button>
-                    <a rel="external" href="../pages/begin_cooking_beef.html">
-                        <button data-theme="a" style="height:50px;">
-                            Begin Cooking
-                        </button>
-                    </a>
-                <br></br>
-
-                <p><fieldset class="ui-field-contain" align="center">
+                </fieldset></p>
+                    <p><a rel="external" href="../pages/begin_cooking_beef.html">
+                        <button type="button" id="cookButton" data-theme="a" value="cook">Begin Cooking</button>
+                    </a></p>
+            
+                <br>
+                <center>
+                <p><fieldset class="ui-field-contain" align="center" style="width:200px">
                 <legend>Order:</legend>
                 <label for="number">Number of Servings</label>
-                    <select name="number" id="number">
+                    <select name="number" id="number" data-theme="b">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -45,10 +56,13 @@
                         <option value="10">10</option>
                     </select>
                 </fieldset></p>
-                <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
-                <br></br>
+                <div style="width:200px;">
+                <p><button type="button" value="Add to Cart" data-theme="h" onclick="addToCart()">Add to Cart</button></p>
+                </div>
                 </center>
             </div><!-- /content -->
+            <br> <br>
+
 
             <div class="foot" data-role="footer">
                 <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
