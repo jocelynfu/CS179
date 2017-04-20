@@ -26,19 +26,24 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <center><p><img src="../img/tacos.png" width='80'></center>
+                <center>
+                    <img src="../img/tacos.png" width='80'>
+                    <br> </br>
+                    <p> Sample recipe details </p>
+                </center>
 
-                <p><fieldset class="ui-field-contain" align="center">
+
+                <p><fieldset class="ui-field-contain" align="center" >
                     <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
                     <button type="button" id="myrecipeButton" value="remove" data-theme="a" onclick="removeRecipe()">Remove from My Recipes</button>
                 </fieldset></p>
                 <p><button type="button" id="cookButton" data-theme="a" value="cook">Begin Cooking</button></p>
                 <br>
-
-                <p><fieldset class="ui-field-contain" align="center">
+                <center>
+                <p><fieldset class="ui-field-contain" align="center" style="width:200px">
                 <legend>Order:</legend>
                 <label for="number">Number of Servings</label>
-                    <select name="number" id="number">
+                    <select name="number" id="number" data-theme="b">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -51,19 +56,18 @@
                         <option value="10">10</option>
                     </select>
                 </fieldset></p>
-                <p><button type="button" value"Add to Cart" onclick="addToCart()">Add to Cart</button></p>
-                <br></br></center>
-            </div><!-- /content -->
-
-            <div class="foot" div data-role="footer">
-                <div data-role="navbar">
-                <ul>
-                    <li><a rel="external" href="../pages/my_recipes" data-rel="back">Back</a></li>
-                    <li><a rel="external" href="../">Home</a></li>
-                    <li><a rel="external" href="../pages/cart.html"> Cart </a></p>
-                </ul>
+                <div style="width:200px;">
+                <p><button type="button" value"Add to Cart" data-theme="h" onclick="addToCart()">Add to Cart</button></p>
                 </div>
+                </center>
+            </div><!-- /content -->
+            <br> <br>
+
+            <div class="foot" data-role="footer">
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <!-- <audio id="audio" autoplay="autoplay" src="audio/HomePage.m4a" ></audio> --></center>
             </div><!-- /footer -->
+
             <script language="javascript">
                 function getRecipes() {
                     var recipes = [];
