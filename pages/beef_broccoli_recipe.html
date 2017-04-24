@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<!--     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
@@ -29,15 +29,16 @@
             <div role="main" class="ui-content">
                 <center>
                     <img src="../img/beefbroccoli.jpg" width='80'>
+                <br> </br>
+                    <p> Sample recipe details </p>
                 </center>
-                <p><fieldset class="ui-field-contain" align="center">
+
+
+                <p><fieldset class="ui-field-contain" align="center" >
                     <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
-                    <button type="button" id="myrecipeButton" value="remove" onclick="removeRecipe()">Remove from My Recipes</button>
+                    <button type="button" id="myrecipeButton" value="remove" data-theme="a" onclick="removeRecipe()">Remove from My Recipes</button>
                 </fieldset></p>
-                    <p><a rel="external" href="../pages/begin_cooking_beef.html">
-                        <button type="button" id="cookButton" data-theme="a" value="cook">Begin Cooking</button>
-                    </a></p>
-            
+                <p><button type="button" id="cookButton" data-theme="a" value="cook">Begin Cooking</button></p>
                 <br>
                 <center>
                 <p><fieldset class="ui-field-contain" align="center" style="width:200px">
