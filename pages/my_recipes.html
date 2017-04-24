@@ -57,7 +57,7 @@
 
                     recipes.forEach(function(recipe, index) {
                         // html += "<p><a rel='external' href='" + recipe.url + "' class='ui-btn ui-mini'>" + recipe.name + "</a></p>";
-                        html += "<p><a rel='external' href="+recipe.url+" class=\"ui-btn\" style=\"width: 250px; height:40px;\"><button data-theme=\"h\"style=\"line-height:0.5\">" + recipe.name +"</button></a></p>";
+                        html += "<p><a rel='external' href="+recipe.url+" class=\"ui-btn\" style=\"width: 250px; height:40px;\">"+ recipe.name +"</a></p>";
                     });
                     document.getElementById('recipesList').innerHTML = html;
                 }
