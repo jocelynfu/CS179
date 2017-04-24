@@ -42,7 +42,7 @@
                 <br>
                 <center>
                 <p><fieldset class="ui-field-contain" align="center" style="width:200px">
-                <legend>Order:</legend>
+                <legend>Order Ingredients:</legend>
                 <label for="number">Number of Servings</label>
                     <select name="number" id="number" data-theme="b">
                         <option value="1">1</option>
@@ -70,7 +70,9 @@
                 <audio id="audio" autoplay="autoplay" src="../audio/BBSF.m4a" ></audio>
                 </center>
             </div><!-- /footer -->
-            
+            <div data-role="popup" id="popupCarted">
+                <p>Added to Cart<p>
+            </div><!-- /popup -->
             <script language="javascript">
                 function getRecipes() {
                     var recipes = [];
@@ -126,6 +128,7 @@
                     // Restore in local storage
                     localStorage.setItem("cart", JSON.stringify(cart));
                     console.log(getCart());
+                    $( "#popupCarted" ).popup( "open" );
                 }
 
                 function addToRecipes() {
