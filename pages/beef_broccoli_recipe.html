@@ -38,7 +38,7 @@
                     <label for="inMyRecipes" id="inMyRecipes">Number of Servings</label>
                     <button type="button" id="myrecipeButton" value="remove" data-theme="a" onclick="removeRecipe()">Remove from My Recipes</button>
                 </fieldset></p>
-                <p><button type="button" id="cookButton" data-theme="a" value="cook">Begin Cooking</button></p>
+                <p><a href="../pages/begin_cooking_beef.html"> <button type="button" id="cookButton" data-theme="a" value="cook">Begin Cooking</button></a></p>
                 <br>
                 <center>
                 <p><fieldset class="ui-field-contain" align="center" style="width:200px">
@@ -156,15 +156,15 @@
                 }
 
                 function updateButtonAdd() {
-                    $('#inMyRecipes').html('Not saved in My Recipes');
+                    $('#inMyRecipes').html('Not saved in Favorites');
                     $('#myrecipeButton').attr('onclick', "addToRecipes()");
-                    $('#myrecipeButton').html('Add to My Recipes');     
+                    $('#myrecipeButton').html('Add to Favorites');     
                 }
 
                 function updateButtonRemove() {
-                    $('#inMyRecipes').html('Saved in My Recipes');
+                    $('#inMyRecipes').html('Saved in Favorites');
                     $('#myrecipeButton').attr('onclick', "removeRecipe()");
-                    $('#myrecipeButton').html('Remove From My Recipes'); 
+                    $('#myrecipeButton').html('Remove From Favorites'); 
                 }
 
                 window.onload=function() {

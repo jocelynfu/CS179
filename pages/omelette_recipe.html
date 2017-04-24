@@ -154,15 +154,15 @@
                 }
 
                 function updateButtonAdd() {
-                    $('#inMyRecipes').html('Not saved in My Recipes');
+                    $('#inMyRecipes').html('Not saved in Favorites');
                     $('#myrecipeButton').attr('onclick', "addToRecipes()");
-                    $('#myrecipeButton').html('Add to My Recipes');     
+                    $('#myrecipeButton').html('Add to Favorites');     
                 }
 
                 function updateButtonRemove() {
-                    $('#inMyRecipes').html('Saved in My Recipes');
+                    $('#inMyRecipes').html('Saved in Favorites');
                     $('#myrecipeButton').attr('onclick', "removeRecipe()");
-                    $('#myrecipeButton').html('Remove From My Recipes'); 
+                    $('#myrecipeButton').html('Remove From Favorites'); 
                 }
 
                 window.onload=function() {
