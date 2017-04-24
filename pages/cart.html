@@ -33,7 +33,7 @@
             </div><!-- /footer -->
 
             <div data-role="popup" id="popupOrdered">
-                <p>Order Successful<p>
+                <p>Thanks for the Order!<p>
             </div><!-- /popup -->
             <script language="javascript">
                 function getCart() {
@@ -118,7 +118,7 @@
                         }
                         deleteItem(index);
                     }); 
-                    if(myRecipesUpdated) html += "Added to My Recipes";
+                    if(myRecipesUpdated) html += "Added to Favorites";
                     console.log(html);
                     $('#popupOrdered').html(html); 
                     $( "#popupOrdered" ).popup( "open" );
