@@ -24,7 +24,18 @@
 
             <div role="main" class="ui-content">
                 <p><div id="itemsList"></div></p>
-                <p><center><button data-theme="h" type="button" value"Add to Cart" style="width:150px" onclick="orderCart()">Order</button></center></p>
+                <p><center><button data-theme="h" id="order" type="button" value"Add to Cart" style="width:150px" onclick="orderCart()">Order</button></center></p>
+                <p><div id="empty">
+                    <center> Your cart is currently empty! 
+                        <p><a rel="external" href="../pages/shop_ingredients.html">
+                            <button data-theme="a">Shop Ingredients</button>
+                        </a></p>
+                        <p><a rel="external" href="../pages/shop_recipes.html">
+                            <button data-theme="a">Shop Recipes</button>
+                        </a></p>
+                    </center>
+                </div></p>
+                <br></br>
             </div><!-- /content -->
 
             <div class="foot" data-role="footer">
@@ -33,7 +44,7 @@
             </div><!-- /footer -->
 
             <div data-role="popup" id="popupOrdered">
-                <p>Order Successful<p>
+                <p>Thanks for the Order!<p>
             </div><!-- /popup -->
             <script language="javascript">
                 function getCart() {
@@ -75,12 +86,21 @@
                 }
 
                 function printCart() {
-                    cart = getCart();
-                    var ul = document.createElement('ul');
-                    ul.setAttribute('id','items');
                     document.getElementById('itemsList').innerHTML = "";
-                    document.getElementById('itemsList').appendChild(ul);
-                    cart.forEach(renderList);
+                    
+                    cart = getCart();
+                    if (cart.length == 0) {
+                        $("#order").hide();
+                        $("#empty").show();
+
+                    } else {
+                        $("#order").show();
+                        $("#empty").hide();
+                        var ul = document.createElement('ul');
+                        ul.setAttribute('id','items');
+                        document.getElementById('itemsList').appendChild(ul);
+                        cart.forEach(renderList);
+                    }
 
                     function renderList(item, index) {
                         var li = document.createElement("LI");
@@ -89,12 +109,12 @@
                         ul.appendChild(li);
                         t = document.createTextNode(index);
                         if (!item.mealKit) {
-                            li.innerHTML=li.innerHTML + item.number + " " + item.volume + "oz. of " + item.name;
+                            li.innerHTML=li.innerHTML + "<input style='width:20px' type='text' name='number' value=" + item.number + "> " + "<input style='width:30px' type='text' name='volume' value=" + item.volume + "> " + " oz. of " + item.name;
                             if(item.chopped) li.innerHTML += " pre-chopped ";
                             if(item.seasoned) li.innerHTML += " pre-seasoned ";
                             li.innerHTML += " <button type='button' data-theme='f'onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
                         } else {
-                            li.innerHTML=li.innerHTML + item.number + " " + item.name + "<button type='button' data-theme='f' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
+                            li.innerHTML=li.innerHTML + "<input style='width:20px' type='text' name='number' value=" + item.number + "> " + item.name + " <button type='button' data-theme='f' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
                         }     
                     }
                 }
@@ -102,12 +122,12 @@
                 function deleteItem(item) {
                     cart = getCart();
                     cart.splice(item.id, 1);
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    printCart();    
+                    localStorage.setItem("cart", JSON.stringify(cart)); 
+                    printCart();
                 }
 
                 function orderCart() {
-                    html = "<p> Cart Ordered! </p>";
+                    html = "<p> Thanks for your order! </p>";
                     cart = getCart();
                     myRecipesUpdated = false;
                     cart.forEach(function(item, index) {
@@ -118,7 +138,7 @@
                         }
                         deleteItem(index);
                     }); 
-                    if(myRecipesUpdated) html += "Added to My Recipes";
+                    if(myRecipesUpdated) html += "Added to your Favorites";
                     console.log(html);
                     $('#popupOrdered').html(html); 
                     $( "#popupOrdered" ).popup( "open" );
