@@ -31,7 +31,7 @@
 
                 <div data-role="popup" id="meal_filter" class="ui-content" style="min-width:250px;">
                   <form>
-                        <fieldset data-role="controlgroup" onchange="printMeal()">
+                        <fieldset data-role="controlgroup">
                         <legend>Meals</legend>
                         <input type="checkbox" name="breakfast" id="breakfast" class="mealOfDay" checked=true>
                         <label for="breakfast">Breakfast</label>
@@ -45,7 +45,7 @@
 
                 <div data-role="popup" id="cusine_filter" class="ui-content" style="min-width:250px;">
                   <form>
-                        <fieldset data-role="controlgroup" onchange="printMeal()">
+                        <fieldset data-role="controlgroup">
                         <legend>Cusines</legend>
                         <input type="checkbox" name="american" id="american" class="cuisine" checked=true>
                         <label for="american">American</label>
@@ -60,8 +60,11 @@
                     </fieldset>
                   </form>
                 </div>
-
                 <center>
+                <div class="ui-content ui-corner-all" style="width:250px;">
+                        Keyword<input type="text" name="key" id="key" value="">
+                        <button data-theme="b" id="filter" type="button" value"filter" onclick="printMeal()">Filter</button>
+                </div>
                     <div id="mealKits"> </div>
                     <p><a rel="external" href="../pages/add_recipe.html"> <button data-theme="b" style="width: 250px; height:40px;">Add Your Own Recipe</button></a></p>
                 </center>
@@ -91,6 +94,8 @@
                 }
 
                 function filterData(meals){
+                    key = $("#key").val();
+                    
                     mealsSelected=[]
                     var status = $('input[type="checkbox"').filter(".mealOfDay").map(function(){
                             var name = $(this).attr('name'); 
@@ -106,7 +111,8 @@
                         });
 
                     var filteredMeals = meals.filter(function (s) {
-                        return (mealsSelected.indexOf(s.meal_of_day) >= 0 && cuisinesSelected.indexOf(s.cuisine) >= 0 );
+                        console.log(s.name.toLowerCase().search(key.toLowerCase()));
+                        return (mealsSelected.indexOf(s.meal_of_day) >= 0 && cuisinesSelected.indexOf(s.cuisine) >= 0 ) && (s.name.toLowerCase().includes(key.toLowerCase()));
                     });
 
                     return filteredMeals;

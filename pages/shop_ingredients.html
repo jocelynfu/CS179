@@ -30,7 +30,7 @@
                 <a href="#ingredient_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Type</a>
                 <div data-role="popup" id="ingredient_filter" class="ui-content" style="min-width:250px;">
                   <form>
-                        <fieldset data-role="controlgroup" onchange="printIngredients()">
+                        <fieldset data-role="controlgroup">
                         <legend>Ingredients</legend>
                         <input type="checkbox" name="fruits" id="fruits" class="type" checked=true>
                         <label for="fruits">Fruits</label>
@@ -46,6 +46,10 @@
                 </center>
 
                 <center>
+                    <div class="ui-content ui-corner-all" style="width:250px;">
+                        Keyword<input type="text" name="key" id="key" value="">
+                        <button data-theme="b" id="filter" type="button" value"filter" onclick="printIngredients()">Filter</button>
+                    </div>
                     <div id="ingredients"></div>
                 </center>
             </div><!-- /content -->
@@ -70,6 +74,8 @@
                 }
 
                 function filterData(ing){
+                    key = $("#key").val();
+
                     typeSelected=[]
                     var status = $('input[type="checkbox"').filter(".type").map(function(){
                             var name = $(this).attr('name'); 
@@ -78,7 +84,7 @@
                         });
 
                     var filteredIng = ing.filter(function (s) {
-                        return (typeSelected.indexOf(s.type) >= 0);
+                        return (typeSelected.indexOf(s.type) >= 0) && (s.name.toLowerCase().includes(key.toLowerCase()));
                     });
 
                     return filteredIng;
