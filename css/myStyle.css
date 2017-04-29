@@ -28,3 +28,11 @@ html, body
 #textarea1 {
   height:40px;
 }
+
+.filtertext {
+  width: 275px;
+}
+
+.filtertextingredients {
+  width: 230px;
+}

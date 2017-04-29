@@ -26,8 +26,14 @@
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <a href="#meal_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Meal</a>
-                <a href="#cusine_filter" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Filter by Cuisine</a>
+                <div class="ui-field-contain">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input data-wrapper-class="filtertext" type="text" name="key" id="key" value="" placeholder="Keyword">
+                        <a href="#meal_filter" data-rel="popup" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left">Meal</a>
+                        <a href="#cusine_filter" data-rel="popup" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left">Cuisine</a>
+                        <button data-theme="b" id="filter" type="button" value"filter" onclick="printMeal()">Filter</button>
+                    </fieldset>
+                </div>
 
                 <div data-role="popup" id="meal_filter" class="ui-content" style="min-width:250px;">
                   <form>
@@ -61,10 +67,6 @@
                   </form>
                 </div>
                 <center>
-                <div class="ui-content ui-corner-all" style="width:250px;">
-                        Keyword<input type="text" name="key" id="key" value="">
-                        <button data-theme="b" id="filter" type="button" value"filter" onclick="printMeal()">Filter</button>
-                </div>
                     <div id="mealKits"> </div>
                     <p><a rel="external" href="../pages/add_recipe.html"> <button data-theme="b" style="width: 250px; height:40px;">Add Your Own Recipe</button></a></p>
                 </center>
