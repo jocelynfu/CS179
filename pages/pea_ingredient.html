@@ -65,6 +65,7 @@
 
             <div class="foot" data-role="footer">
                 <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <input type="image" id="stopbutton" style="height:40px;" src="../img/icons/stop.png" onclick="stop()"/>
                 <audio id="audio" autoplay="autoplay" src="../audio/SingleIngredient.m4a" ></audio>
                 </center>
             </div><!-- /footer -->
@@ -120,6 +121,12 @@
                 function play(){
                     var audio = document.getElementById("audio");
                     audio.play();
+                }
+
+                function stop(){
+                    var audio = document.getElementById("audio");
+                    audio.pause();
+                    audio.currentTime = 0;
                 }
             </script>
         </div><!-- /page -->

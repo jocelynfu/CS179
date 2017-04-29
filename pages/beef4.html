@@ -6,6 +6,18 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <script>
+        function play(){
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+
+        function stop(){
+            var audio = document.getElementById("audio");
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    </script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
@@ -39,6 +51,7 @@
 
             <div class="foot" data-role="footer">
                 <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <input type="image" id="stopbutton" style="height:40px;" src="../img/icons/stop.png" onclick="stop()"/>
                 <audio id="audio" autoplay="autoplay" src="../audio/Beef4.m4a" ></audio></center>
             </div><!-- /footer -->
             <script language="javascript">

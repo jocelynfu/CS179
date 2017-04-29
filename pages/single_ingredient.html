@@ -123,6 +123,12 @@
                     var audio = document.getElementById("audio");
                     audio.play();
                 }
+
+                function stop(){
+                    var audio = document.getElementById("audio");
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
             </script>
         </div><!-- /page -->
     </body>

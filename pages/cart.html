@@ -6,6 +6,18 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <script>
+        function play(){
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+
+        function stop(){
+            var audio = document.getElementById("audio");
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    </script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
@@ -40,6 +52,7 @@
 
             <div class="foot" data-role="footer">
                 <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <input type="image" id="stopbutton" style="height:40px;" src="../img/icons/stop.png" onclick="stop()"/>
                 <audio id="audio" autoplay="autoplay" src="../audio/Cart.m4a" ></audio></center>
             </div><!-- /footer -->
 
@@ -127,18 +140,18 @@
                 }
 
                 function orderCart() {
-                    html = "<p> Thanks for your order! </p>";
+                    html = "<p><center>Thanks for your order!</center></p>";
                     cart = getCart();
                     myRecipesUpdated = false;
                     cart.forEach(function(item, index) {
                         if(item.mealKit) {
                             myRecipesUpdated = true;
-                            html += "<p>" + item.name + "</p>"
+                            html += "<center><p> " + item.name + " </p>"
                             addToRecipes(item.name, item.url, item.number)
                         }
                         deleteItem(index);
                     }); 
-                    if(myRecipesUpdated) html += "Added to your Favorites";
+                    if(myRecipesUpdated) html += "Added to my <font size='4'><b><a rel='external' href='../pages/my_recipes.html'>Favorites</a></b></font></center>";
                     console.log(html);
                     $('#popupOrdered').html(html); 
                     $( "#popupOrdered" ).popup( "open" );
