@@ -54,8 +54,6 @@
                     <legend>Options:</legend>
                     <input type="checkbox" name="chopped" id="chopped">
                     <label for="chopped">Pre-chopped</label>
-                    <input type="checkbox" name="seasoned" id="seasoned">
-                    <label for="seasoned">Pre-seasoned</label>
                 </fieldset></p>
                 <p><button type="button" value"Add to Cart" style="width:150px" onclick="addToCart()" data-theme="f">Add to Cart</button></p>
                 <br></br>
@@ -89,7 +87,7 @@
                     var volume = document.getElementById("volume").value;
                     var number = document.getElementById("number").value;
                     var chopped = $('#chopped').is(':checked');
-                    var seasoned = $('#seasoned').is(':checked');;
+                    var seasoned = false;
                     var mealKit = false;
                     var inCart = false;
 

@@ -52,8 +52,6 @@
                 </fieldset></p>
                 <p><fieldset data-role="controlgroup" data-type="horizontal">
                     <legend>Options:</legend>
-                    <input type="checkbox" name="chopped" id="chopped">
-                    <label for="chopped">Pre-chopped</label>
                     <input type="checkbox" name="seasoned" id="seasoned">
                     <label for="seasoned">Pre-seasoned</label>
                 </fieldset></p>
@@ -88,8 +86,8 @@
                     var img = "../img/salmon.png";
                     var volume = document.getElementById("volume").value;
                     var number = document.getElementById("number").value;
-                    var chopped = $('#chopped').is(':checked');
-                    var seasoned = $('#seasoned').is(':checked');;
+                    var chopped = false;
+                    var seasoned = $('#seasoned').is(':checked');
                     var mealKit = false;
                     var inCart = false;
 
