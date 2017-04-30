@@ -11,6 +11,12 @@
             var audio = document.getElementById("audio");
             audio.play();
         }
+
+        function stop(){
+            var audio = document.getElementById("audio");
+            audio.pause();
+            audio.currentTime = 0;
+        }
     </script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
@@ -26,15 +32,17 @@
                     <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
                  </div>
                 <h2> Cooking Tools </h2>
+                <div class="ui-btn-right">
+                    <a rel="external" href="../pages/cart.html"><img src="../img/icons/cart.png" width='35'></a>
+                </div>
             </div><!-- /header -->
 
             <div role="main" class="ui-content">
-                <p> This is where users access tools that help them cook! </p>
                 <p><a rel="external" href="../pages/scan.html" >
-                    <button data-theme="a">Scan</button>
+                    <button data-theme="a">Identify Ingredient</button>
                 </a></p>
                 <p><a rel="external" href="../pages/camera.html">
-                    <button data-theme="a">Camera</button>
+                    <button data-theme="a">Check Cooked Status</button>
                 </a></p>
                 
             </div><!-- /content -->
@@ -42,6 +50,7 @@
 
             <div class="foot" data-role="footer">
                 <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <input type="image" id="stopbutton" style="height:40px;" src="../img/icons/stop.png" onclick="stop()"/>
                 <audio id="audio" autoplay="autoplay" src="../audio/CookingTools.m4a" ></audio>
                 </center>
             </div><!-- /footer -->

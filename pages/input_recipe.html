@@ -16,7 +16,7 @@
 
             <div data-role="header">
                 <div class="ui-btn-left">
-                    <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='35'></a>
+                    <a rel="external" href="../pages/shop_recipes.html" align="left"><img src="../img/icons/back.png" width='35'></a>
                     <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
                  </div>
                 <h2> Grandma's Chicken Recipe </h2>
@@ -35,7 +35,7 @@
                 <br>
 
                 <p><fieldset class="ui-field-contain" align="center">
-                <legend>Order:</legend>
+                <legend>Order Ingredients:</legend>
                 <label for="number">Number of Servings</label>
                     <center>
                         <div style="width:150px">
@@ -61,11 +61,14 @@
             </div><!-- /content -->
 
             <div class="foot" data-role="footer">
-                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick=""/>
+                <input type="image" id="stopbutton" style="height:40px;" src="../img/icons/stop.png" onclick=""/>
 <!--                 <audio id="audio" autoplay="autoplay" src="../audio/newRecipe.m4a" ></audio> -->
                 </center>
             </div><!-- /footer -->
-
+            <div data-role="popup" id="popupCarted">
+                <p>Added to Cart<p>
+            </div><!-- /popup -->
             <script language="javascript">
                 function getRecipes() {
                     var recipes = [];
@@ -121,6 +124,7 @@
                     // Restore in local storage
                     localStorage.setItem("cart", JSON.stringify(cart));
                     console.log(getCart());
+                    $( "#popupCarted" ).popup( "open" );
                 }
 
                 function addToRecipes() {
@@ -151,15 +155,15 @@
                 }
 
                 function updateButtonAdd() {
-                    $('#inMyRecipes').html('Not saved in My Recipes');
+                    $('#inMyRecipes').html('Not saved in Favorites');
                     $('#myrecipeButton').attr('onclick', "addToRecipes()");
-                    $('#myrecipeButton').html('Add to My Recipes');     
+                    $('#myrecipeButton').html('Add to Favorites');     
                 }
 
                 function updateButtonRemove() {
-                    $('#inMyRecipes').html('Saved in My Recipes');
+                    $('#inMyRecipes').html('Saved in Favorites');
                     $('#myrecipeButton').attr('onclick', "removeRecipe()");
-                    $('#myrecipeButton').html('Remove From My Recipes'); 
+                    $('#myrecipeButton').html('Remove From Favorites'); 
                 }
 
                 window.onload=function() {

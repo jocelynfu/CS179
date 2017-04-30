@@ -6,13 +6,24 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="../libs/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <script>
+        function play(){
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+
+        function stop(){
+            var audio = document.getElementById("audio");
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    </script>
     <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.flatui.css">
     <link rel="stylesheet" type="text/css" href="../css/myStyle.css">
 </head>
     <body>
-         <!-- Start of cook page -->
-        <div data-role="page" id="cook">
+        <div data-role="page" id="cart">
 
             <div data-role="header">
                 <div class="ui-btn-left">
@@ -24,16 +35,28 @@
 
             <div role="main" class="ui-content">
                 <p><div id="itemsList"></div></p>
-                <p><center><button data-theme="h" type="button" value"Add to Cart" style="width:150px" onclick="orderCart()">Order</button></center></p>
+                <p><center><button data-theme="h" id="order" type="button" value"Add to Cart" style="width:150px" onclick="orderCart()">Order</button></center></p>
+                <p><div id="empty">
+                    <center> Your cart is currently empty! 
+                        <p><a rel="external" href="../pages/shop_ingredients.html">
+                            <button data-theme="a">Shop Ingredients</button>
+                        </a></p>
+                        <p><a rel="external" href="../pages/shop_recipes.html">
+                            <button data-theme="a">Shop Recipes</button>
+                        </a></p>
+                    </center>
+                </div></p>
+                <br></br>
             </div><!-- /content -->
 
             <div class="foot" data-role="footer">
                 <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <input type="image" id="stopbutton" style="height:40px;" src="../img/icons/stop.png" onclick="stop()"/>
                 <audio id="audio" autoplay="autoplay" src="../audio/Cart.m4a" ></audio></center>
             </div><!-- /footer -->
 
             <div data-role="popup" id="popupOrdered">
-                <p>Order Successful<p>
+                <p>Thanks for the Order!<p>
             </div><!-- /popup -->
             <script language="javascript">
                 function getCart() {
@@ -75,12 +98,21 @@
                 }
 
                 function printCart() {
-                    cart = getCart();
-                    var ul = document.createElement('ul');
-                    ul.setAttribute('id','items');
                     document.getElementById('itemsList').innerHTML = "";
-                    document.getElementById('itemsList').appendChild(ul);
-                    cart.forEach(renderList);
+                    
+                    cart = getCart();
+                    if (cart.length == 0) {
+                        $("#order").hide();
+                        $("#empty").show();
+
+                    } else {
+                        $("#order").show();
+                        $("#empty").hide();
+                        var ul = document.createElement('ul');
+                        ul.setAttribute('id','items');
+                        document.getElementById('itemsList').appendChild(ul);
+                        cart.forEach(renderList);
+                    }
 
                     function renderList(item, index) {
                         var li = document.createElement("LI");
@@ -89,12 +121,12 @@
                         ul.appendChild(li);
                         t = document.createTextNode(index);
                         if (!item.mealKit) {
-                            li.innerHTML=li.innerHTML + item.number + " " + item.volume + "oz. of " + item.name;
+                            li.innerHTML=li.innerHTML + "<input style='width:20px' type='text' name='number' value=" + item.number + "> " + "<input style='width:30px' type='text' name='volume' value=" + item.volume + "> " + " oz. of " + item.name;
                             if(item.chopped) li.innerHTML += " pre-chopped ";
                             if(item.seasoned) li.innerHTML += " pre-seasoned ";
                             li.innerHTML += " <button type='button' data-theme='f'onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
                         } else {
-                            li.innerHTML=li.innerHTML + item.number + " " + item.name + "<button type='button' data-theme='f' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
+                            li.innerHTML=li.innerHTML + "<input style='width:20px' type='text' name='number' value=" + item.number + "> " + item.name + " <button type='button' data-theme='f' onclick='deleteItem(this.parentElement)'><b>Remove</b></button>";
                         }     
                     }
                 }
@@ -102,23 +134,23 @@
                 function deleteItem(item) {
                     cart = getCart();
                     cart.splice(item.id, 1);
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    printCart();    
+                    localStorage.setItem("cart", JSON.stringify(cart)); 
+                    printCart();
                 }
 
                 function orderCart() {
-                    html = "<p> Cart Ordered! </p>";
+                    html = "<p><center>Thanks for your order!</center></p>";
                     cart = getCart();
                     myRecipesUpdated = false;
                     cart.forEach(function(item, index) {
                         if(item.mealKit) {
                             myRecipesUpdated = true;
-                            html += "<p>" + item.name + "</p>"
+                            html += "<center><p> " + item.name + " </p>"
                             addToRecipes(item.name, item.url, item.number)
                         }
                         deleteItem(index);
                     }); 
-                    if(myRecipesUpdated) html += "Added to My Recipes";
+                    if(myRecipesUpdated) html += "Added to my <font size='4'><b><a rel='external' href='../pages/my_recipes.html'>Favorites</a></b></font></center>";
                     console.log(html);
                     $('#popupOrdered').html(html); 
                     $( "#popupOrdered" ).popup( "open" );

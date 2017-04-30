@@ -41,7 +41,7 @@
                 <br>
                 <center>
                 <p><fieldset class="ui-field-contain" align="center" style="width:200px">
-                <legend>Order:</legend>
+                <legend>Order Ingredients:</legend>
                 <label for="number">Number of Servings</label>
                     <select name="number" id="number" data-theme="b">
                         <option value="1">1</option>
@@ -60,14 +60,18 @@
                 <p><button type="button" value="Add to Cart" data-theme="h" onclick="addToCart()">Add to Cart</button></p>
                 </div>
                 </center>
+                
             </div><!-- /content -->
             <br> <br>
 
             <div class="foot" data-role="footer">
-                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick="play()"/>
+                <center><input type="image" id="audiobutton" style="height:40px;" src="../img/icons/audio.png" onclick=""/>
+                <input type="image" id="stopbutton" style="height:40px;" src="../img/icons/stop.png" onclick=""/>
                 <!-- <audio id="audio" autoplay="autoplay" src="audio/HomePage.m4a" ></audio> --></center>
             </div><!-- /footer -->
-
+            <div data-role="popup" id="popupCarted">
+                <p>Added to Cart<p>
+            </div><!-- /popup -->
             <script language="javascript">
                 function getRecipes() {
                     var recipes = [];
@@ -151,18 +155,19 @@
                     localStorage.setItem("recipes", JSON.stringify(recipes));
                     console.log(getRecipes());
                     updateButtonRemove();
+                    $( "#popupCarted" ).popup( "open" );
                 }
 
                 function updateButtonAdd() {
-                    $('#inMyRecipes').html('Not saved in My Recipes');
+                    $('#inMyRecipes').html('Not saved in Favorites');
                     $('#myrecipeButton').attr('onclick', "addToRecipes()");
-                    $('#myrecipeButton').html('Add to My Recipes');     
+                    $('#myrecipeButton').html('Add to Favorites');     
                 }
 
                 function updateButtonRemove() {
-                    $('#inMyRecipes').html('Saved in My Recipes');
+                    $('#inMyRecipes').html('Saved in Favorites');
                     $('#myrecipeButton').attr('onclick', "removeRecipe()");
-                    $('#myrecipeButton').html('Remove From My Recipes'); 
+                    $('#myrecipeButton').html('Remove From Favorites'); 
                 }
 
                 window.onload=function() {
