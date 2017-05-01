@@ -17,7 +17,7 @@
             <div data-role="header">
                 <div class="ui-btn-left">
                     <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='35'></a>
-                    <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
+                    <a rel="external" href="../index.html"><img src="../img/icons/home.png" width='35'></a>
                  </div>
                 <h2> Shop Ingredients </h2>
                 <div class="ui-btn-right">
@@ -46,6 +46,7 @@
                         <label for="meats">Meats</label>
                         <input type="checkbox" name="seafood" id="seafood" class="type" checked=true>
                         <label for="seafood">Seafood</label>
+                        <button data-theme="b" id="filter" type="button" value"filter" onclick="printIngredients()">Filter</button>
                     </fieldset>
                   </form>
                 </div>
@@ -71,6 +72,7 @@
 
                     // display ingedient
                     displayIngredient(filtered);
+                    $("#ingredient_filter").popup("close");
                 }
 
                 function filterData(ing){

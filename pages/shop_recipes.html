@@ -17,7 +17,7 @@
             <div data-role="header">
                 <div class="ui-btn-left">
                     <a rel="external" href="#" data-rel="back" align="left"><img src="../img/icons/back.png" width='35'></a>
-                    <a rel="external" href="../"><img src="../img/icons/home.png" width='35'></a>
+                    <a rel="external" href="../index.html"><img src="../img/icons/home.png" width='35'></a>
                  </div>
                 <h2> Shop Recipes </h2>
                 <div class="ui-btn-right">
@@ -45,6 +45,7 @@
                         <label for="lunch">Lunch</label>
                         <input type="checkbox" name="dinner" id="dinner" class="mealOfDay" checked=true>
                         <label for="dinner">Dinner</label>
+                        <button data-theme="b" id="filter" type="button" value"filter" onclick="printMeal()">Filter</button>
                     </fieldset>
                   </form>
                 </div>
@@ -52,7 +53,7 @@
                 <div data-role="popup" id="cusine_filter" class="ui-content" style="min-width:250px;">
                   <form>
                         <fieldset data-role="controlgroup">
-                        <legend>Cusines</legend>
+                        <legend>Cuisines</legend>
                         <input type="checkbox" name="american" id="american" class="cuisine" checked=true>
                         <label for="american">American</label>
                         <input type="checkbox" name="mexican" id="mexican" class="cuisine" checked=true>
@@ -63,6 +64,7 @@
                         <label for="italian">Italian</label>
                         <input type="checkbox" name="thai" id="thai" class="cuisine" checked=true>
                         <label for="thai">Thai</label>
+                        <button data-theme="b" id="filter" type="button" value"filter" onclick="printMeal()">Filter</button>
                     </fieldset>
                   </form>
                 </div>
@@ -94,6 +96,8 @@
 
                     // display meals
                     displayMeal(filtered);
+                    $("#cusine_filter").popup("close");
+                    $("#meal_filter").popup("close");
                 }
 
                 function filterData(meals){
